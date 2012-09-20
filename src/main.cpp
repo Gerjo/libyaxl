@@ -15,7 +15,11 @@ void readFile();
 int main(int argc, char** argv) {
 	readFile();
 
-	return cin.get();
+    #ifdef WIN32
+        return cin.get();
+    #else
+        return 0;
+    #endif
 }
 
 
@@ -113,7 +117,7 @@ void scanFolder() {
 void readFile() {
     File file("meh");
 
-    string in = file.readAll();
-
-    cout << in << endl;
+    cout << "File size: " << file.size() << " bytes" << endl;
+    cout << "first char: " << file.readSome(1) << endl;
+    cout << "leftover: " << file.readAll() << endl;
 }

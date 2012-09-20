@@ -2,11 +2,14 @@
 
 
 AbstractFile::AbstractFile(string path) : _path(path) {
-
+    _fileStream = 0;
 }
 
 AbstractFile::~AbstractFile() {
-
+    if(_fileStream != 0) {
+        _fileStream->close();
+        delete _fileStream;
+    }
 }
 
 string AbstractFile::getName() {
@@ -29,36 +32,66 @@ string AbstractFile::getCononicalName() {
 }
 
 
-
 string AbstractFile::readAll() {
-    ifstream fileStream;
-    fileStream.open(_path.c_str(), ios::in|ios::binary|ios::ate);
+    openFileStream();
 
-    const int length = fileStream.tellg();
+    const int length = getRemainingSize();
     char memblock[length];
 
-    fileStream.seekg(0, ios::beg);
-    fileStream.read(memblock, length);
-    fileStream.close();
+    _fileStream->read(memblock, length);
 
-    string asString(memblock, length);
-
-    return asString;
+    return string(memblock, length);
 }
 
 string AbstractFile::readLine() {
-    //stringstream meh;
+    openFileStream();
 
-    //return meh;
+    return "";
 }
 
 string AbstractFile::readSome(int len) {
-    //stringstream meh;
+    openFileStream();
 
-    //return meh;
+    int length = getRemainingSize();
+    int limit  = min(len, length);
+
+    char memblock[length];
+
+    _fileStream->read(memblock, limit);
+
+    return string(memblock, limit);
 }
 
 int AbstractFile::size() {
-    return 0;
+    openFileStream();
+
+    // Take note of the current internal pointer offset:
+    const int pointerPos = _fileStream->tellg();
+
+    _fileStream->seekg(0, ios::end);
+    int fileSize = _fileStream->tellg();
+
+    // Restore the internal pointer.
+    _fileStream->seekg(pointerPos, ios::beg);
+
+    return fileSize;
 }
 
+void AbstractFile::openFileStream(void) {
+    if(_fileStream == 0) {
+        _fileStream = new ifstream();
+        _fileStream->open(_path.c_str(), ios::in|ios::binary|ios::ate);
+
+        // Reset the internal pointer to the beginning.
+        _fileStream->seekg(0, ios::beg);
+    }
+}
+
+
+int AbstractFile::getRemainingSize() {
+    int size  = this->size();
+    int pntr  = _fileStream->tellg();
+    int delta = size - pntr;
+
+    return delta;
+}

@@ -82,4 +82,12 @@ vector<File> PosixFileImpl::listFiles() {
     return files;
 }
 
+
+int PosixFileImpl::size() {
+    //loadStat();
+    //return statDetails.st_size;
+
+    return AbstractFile::size();
+}
+
 #endif  /* !WIN32 */

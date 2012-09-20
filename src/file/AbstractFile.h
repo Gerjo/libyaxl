@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <sstream>
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -26,6 +27,10 @@ protected:
     virtual string getCononicalName();
 
     string _path;
+    ifstream* _fileStream;
+
+    void openFileStream(void);
+    int getRemainingSize(void);
 
 public:
 	virtual ~AbstractFile();

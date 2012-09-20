@@ -31,6 +31,8 @@ public:
 	virtual vector<string> list(void);
     virtual vector<File> listFiles();
 
+    virtual int size();
+
 private:
     int loadStat(void);
     struct stat statDetails;
