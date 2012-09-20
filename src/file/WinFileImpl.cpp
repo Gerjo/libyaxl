@@ -113,4 +113,19 @@ vector<File> WinFileImpl::listFiles() {
 	return files;
 }
 
+int WinFileImpl::size() {
+	return 0;
+}
+
+stringstream WinFileImpl::readAll() {
+	return stringstream();
+}
+
+stringstream WinFileImpl::readLine() {
+	return stringstream();
+}
+
+stringstream WinFileImpl::readSome(int len) {
+	return stringstream();
+}
 #endif // WIN32
