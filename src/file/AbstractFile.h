@@ -54,6 +54,17 @@ public:
 
     virtual void reset();
 
+    /*
+     // TODO: 
+     virtual bool createNewFile();
+     virtual bool mkDir();
+     virtual bool mkDirs();
+
+     virtual int write(const string& data);
+     virtual int write(char* data, const int length);
+
+     */
+
     string computeMD5(void);
 };
 
