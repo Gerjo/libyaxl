@@ -43,10 +43,18 @@ string AbstractFile::readAll() {
     return string(memblock, length);
 }
 
-string AbstractFile::readLine() {
+string AbstractFile::readLine(const char& delimiter) {
     openFileStream();
 
-    return "";
+    string asString;
+
+    std::getline(*_fileStream, asString, delimiter);
+
+    return asString;
+}
+
+string AbstractFile::readLine() {
+    return readLine('\n');
 }
 
 string AbstractFile::readSome(int len) {

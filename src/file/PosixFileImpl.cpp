@@ -18,7 +18,7 @@ bool PosixFileImpl::isDirectory(void) {
 
     int result = loadStat();
 
-    if (result == 0 && ((statDetails.st_mode & S_IFMT) == S_IFDIR)) {
+    if (result == 0 && (statDetails.st_mode & S_IFMT) == S_IFDIR) {
         return true;
     }
 

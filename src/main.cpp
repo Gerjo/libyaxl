@@ -116,9 +116,17 @@ void scanFolder() {
 
 void readFile() {
     File file("meh");
-
     cout << "File size: " << file.size() << " bytes" << endl;
+
     cout << "first char: " << file.readSome(1) << endl;
     cout << "2nd and 3rd char: " << file.readSome(2) << endl;
-    cout << "leftover: " << file.readAll() << endl;
+
+    for(int i = 1; i < 3; ++i) {
+        string tmp = file.readLine();
+        cout << "Lines (" << i << "): '" << tmp << "' (" << tmp.length() << " bytes)" << endl;
+    }
+
+    cout << "What's left: " << file.readAll() << endl;
+
+    cout << "File size: " << file.size() << " bytes" << endl;
 }

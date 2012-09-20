@@ -42,11 +42,12 @@ public:
 	virtual vector<string> list(void) = 0;
     virtual vector<File> listFiles() = 0;
 
+
     virtual int size();
     virtual string readAll();
     virtual string readLine();
+    virtual string readLine(const char& delimiter);
     virtual string readSome(int len);
-
 	virtual string getName();
 };
 
