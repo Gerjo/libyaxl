@@ -67,6 +67,19 @@ vector<string> PosixFileImpl::list(void) {
     ::closedir(dp);
 
     return files;
+
+}
+
+vector<File> PosixFileImpl::listFiles() {
+    vector<string> names = list();
+    vector<File> files;
+
+    for(vector<string>::iterator it = names.begin(); it != names.end(); ++it) {
+        File tmp(getName() + "/" + *it);
+        files.push_back(tmp);
+    }
+
+    return files;
 }
 
 #endif  /* !WIN32 */

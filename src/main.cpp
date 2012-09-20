@@ -62,10 +62,18 @@ try {
 void testFile() {
 	File file4(".");
 	cout << " Scanning /" << file4.getName() << "/ for files... " << endl;
-	vector<string> files = file4.list();
 
-	for(vector<string>::iterator it = files.begin(); it != files.end(); ++it) {
-		cout << (*it) << endl;
+    vector<File> files = file4.listFiles();
+
+    for(vector<File>::iterator it = files.begin(); it != files.end(); ++it) {
+        File& file = (*it);
+        cout << file.getName();
+
+        if(file.isDirectory()) {
+            cout << "/";
+        }
+
+        cout << endl;
 	}
 
     cout << endl << "All done." << endl;

@@ -14,6 +14,8 @@
 #include "AbstractFile.h"
 
 
+class PosixFileImpl;
+typedef PosixFileImpl File;
 
 using namespace std;
 
@@ -28,6 +30,7 @@ public:
 	virtual long lastModified(void);
 	virtual vector<string> list(void);
 
+    virtual vector<File> listFiles();
 
 private:
     int loadStat(void);
