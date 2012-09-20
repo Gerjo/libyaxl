@@ -8,10 +8,10 @@
 Socket::Socket(string address, string port) : _isConnected(false) {
     this->address = address;
     this->port    = port;
-    
+
     outputStream  = new OutputStream(*this);
     inputStream   = new InputStream(*this);
-    
+
     init();
 }
 
@@ -40,17 +40,17 @@ void Socket::init(void) {
 			exit(1);
 		}
 	#endif
-    
+
 	addrinfo hints, *servinfo;
     ::memset(&hints, 0, sizeof(hints));
     hints.ai_family   = AF_UNSPEC;
     hints.ai_socktype = SOCK_STREAM;
-    
+
     if (::getaddrinfo(address.c_str(), port.c_str(), &hints, &servinfo) != 0) {
 		perror("cannot get addr info.");
         return;
     }
-    
+
     // loop through all the results and connect to the first we can
     for(addrinfo* p = servinfo; p != 0; p = p->ai_next) {
         if ((socketFd = ::socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1) {
@@ -73,8 +73,8 @@ void Socket::init(void) {
 		_isConnected = true;
         break;
     }
-    
-	::freeaddrinfo(servinfo); 
+
+	::freeaddrinfo(servinfo);
 
     if (!isConnected()) {
         perror("client: failed to connect\n");
@@ -108,6 +108,6 @@ void Socket::close(const int whom) {
 	_isConnected = false;
 }
 
-const boolean Socket::isConnected(void) {
+const bool Socket::isConnected(void) {
 	return _isConnected;
 }

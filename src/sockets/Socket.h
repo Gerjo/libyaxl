@@ -38,26 +38,26 @@ public:
     Socket(string address, string port);
     virtual ~Socket();
     void close(void);
-    
+
     OutputStream& getOutputStream(void) const;
     InputStream& getInputStream(void) const;
-        
+
     friend class OutputStream;
     friend class InputStream;
-    
-	const boolean isConnected(void);
+
+	const bool isConnected(void);
 
 private:
 	Socket(const Socket& orig);
     string address;
     string port;
     int socketFd;
-    boolean _isConnected;
+    bool _isConnected;
 
     void init(void);
     OutputStream* outputStream;
     InputStream* inputStream;
-    
+
     const int getSocketFd() const;
     void close(const int whom);
 };
