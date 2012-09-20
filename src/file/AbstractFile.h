@@ -41,12 +41,6 @@ public:
     virtual stringstream readLine() = 0;
     virtual stringstream readSome(int len) = 0;
 
-
-    string readAll() {
-        stringstream tmp = readAll();
-        return tmp.str();
-    }
-
 	virtual string getName();
 };
 
