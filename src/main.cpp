@@ -119,5 +119,6 @@ void readFile() {
 
     cout << "File size: " << file.size() << " bytes" << endl;
     cout << "first char: " << file.readSome(1) << endl;
+    cout << "2nd and 3rd char: " << file.readSome(2) << endl;
     cout << "leftover: " << file.readAll() << endl;
 }
