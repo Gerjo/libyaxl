@@ -24,7 +24,7 @@ class AbstractFile {
 protected:
 	AbstractFile(string path);
 
-    virtual string getCononicalName();
+    virtual string getCanonicalName();
 
     string _path;
     ifstream* _fileStream;

@@ -14,6 +14,7 @@ void readFile();
 
 int main(int argc, char** argv) {
 	readFile();
+    scanFolder();
 
     #ifdef WIN32
         return cin.get();

@@ -106,7 +106,7 @@ vector<File> WinFileImpl::listFiles() {
 	vector<File> files;
 
 	for(vector<string>::iterator it = names.begin(); it != names.end(); ++it) {
-		File tmp(getCononicalName() + "/" + *it);
+		File tmp(getCanonicalName() + "/" + *it);
         files.push_back(tmp);
 	}
 

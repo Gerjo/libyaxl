@@ -16,7 +16,7 @@ string AbstractFile::getName() {
 	return _path;
 }
 
-string AbstractFile::getCononicalName() {
+string AbstractFile::getCanonicalName() {
     string name = getName();
     int len     = name.length();
 
