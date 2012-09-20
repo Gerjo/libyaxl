@@ -36,8 +36,6 @@ try {
         char prev    = 0;
         stringstream buff;
         do {
-
-
             int available = in.available();
             if(available > 0) {
                 prev    = current;
@@ -60,10 +58,10 @@ try {
 
 
 void testFile() {
-	File file4(".");
-	cout << " Scanning /" << file4.getName() << "/ for files... " << endl;
+	File file("./");
+	cout << " Scanning " << file.getName() << " for files... " << endl;
 
-    vector<File> files = file4.listFiles();
+    vector<File> files = file.listFiles();
 
     for(vector<File>::iterator it = files.begin(); it != files.end(); ++it) {
         File& file = (*it);
@@ -72,7 +70,7 @@ void testFile() {
         if(file.isDirectory()) {
             cout << "/";
         }
-
+        
         cout << endl;
 	}
 
