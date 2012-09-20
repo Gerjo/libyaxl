@@ -8,7 +8,6 @@
 #ifndef OUTPUTSTREAM_H
 #define	OUTPUTSTREAM_H
 
-#include <cstring>
 #include <string>
 #include <sstream>
 

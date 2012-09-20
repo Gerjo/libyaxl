@@ -13,12 +13,11 @@
 
 using namespace std;
 
-class SocketException : public exception {
+class SocketException {
 public:
     SocketException(string error);
     SocketException(const SocketException& orig);
-    virtual ~SocketException() throw();
-    virtual const char* what() const throw();
+    virtual ~SocketException();
 private:
     string error;
 };

@@ -11,12 +11,8 @@ SocketException::SocketException(string error) : error(error){
 }
 
 SocketException::SocketException(const SocketException& orig) {
-    this->error = orig.error;
 }
 
-SocketException::~SocketException() throw() {
+SocketException::~SocketException() {
 }
 
-const char* SocketException::what() const throw() {
-    return error.c_str();
-}

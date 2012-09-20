@@ -77,8 +77,6 @@ vector<File> PosixFileImpl::listFiles() {
     for(vector<string>::iterator it = names.begin(); it != names.end(); ++it) {
         File tmp(getCononicalName() + "/" + *it);
         files.push_back(tmp);
-
-        cout << "con: " << getCononicalName() << endl;
     }
 
     return files;

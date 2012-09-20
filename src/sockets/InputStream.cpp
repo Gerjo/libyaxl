@@ -8,7 +8,6 @@
 #include <vector>
 
 #include "InputStream.h"
-#include "SocketException.h"
 
 InputStream::InputStream(Socket& socket) : socket(socket) {
     
@@ -24,7 +23,7 @@ void InputStream::concatToBuffer(char* otherBuffer, const int len) {
     }
 }
 
-int InputStream::available(void) throw() {
+int InputStream::available(void) {
     const int socketFd = socket.getSocketFd();
 
     // Using select for time being. Will research non-blocking IO in 
@@ -33,11 +32,11 @@ int InputStream::available(void) throw() {
     fd_set fds;
     FD_ZERO(&fds);
     FD_SET(socketFd, &fds);
-    
+
     if(select(FD_SETSIZE, &fds, 0, 0, &timeout) == -1) {
-        throw SocketException("Unable to perform select() system call.");
+        ::perror("Select has failed. ");
     }
-    
+
     if (FD_ISSET(socketFd, &fds)) {
         const int readChunkSize = 1024;
         char buff2[readChunkSize];
@@ -52,7 +51,8 @@ int InputStream::available(void) throw() {
             }
             
             if(bytesRead == -1) {
-                throw SocketException("Cannot read from socket.");
+                perror("Cannot read because");
+                exit(1);
             }
             
             concatToBuffer(buff2, bytesRead);
@@ -86,7 +86,7 @@ char InputStream::read(void) {
     
     // All empty, nothing to return. Java would return NULL here,
     // but C++ cannot. Possibly will throw an exception here.
-    throw SocketException("There is no further data to be read.");
+    return '\0';
 }
 
 void InputStream::skip(const int skipBytes) {

@@ -76,6 +76,7 @@ vector<string> WinFileImpl::list() {
 
 	if (filesFound == INVALID_HANDLE_VALUE) {
 		cout << "INVALID_HANDLE_VALUE" << endl;
+		cout << cin.get();
 		exit(-1);
 	}
 
@@ -96,6 +97,18 @@ vector<string> WinFileImpl::list() {
 	}
 	
 	FindClose(filesFound);
+
+	return files;
+}
+
+vector<File> WinFileImpl::listFiles() {
+	vector<string> names = list();
+	vector<File> files;
+
+	for(vector<string>::iterator it = names.begin(); it != names.end(); ++it) {
+		File tmp(getCononicalName() + "/" + *it);
+        files.push_back(tmp);
+	}
 
 	return files;
 }

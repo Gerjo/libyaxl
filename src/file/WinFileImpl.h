@@ -6,6 +6,9 @@
 
 #include "AbstractFile.h"
 
+class WinFileImpl;
+typedef WinFileImpl File;
+
 class WinFileImpl : public AbstractFile {
 public:
 	WinFileImpl(string path);
@@ -16,7 +19,7 @@ public:
 	virtual bool exists(void);
 	virtual long lastModified(void);
 	virtual vector<string> list(void);
-
+	virtual vector<File> listFiles();
 private:
 	unsigned long _fileAttributes;
 	bool _areAttributesLoaded;

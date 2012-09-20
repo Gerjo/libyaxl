@@ -34,7 +34,7 @@ public:
     InputStream(Socket& socket);
     char read(void);
     string read(const int bytes);
-    int available(void) throw();
+    int available(void) ;
     void skip(const int amount);
     
 private:

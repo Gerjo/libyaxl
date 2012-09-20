@@ -1,24 +1,49 @@
 #include <cstdlib>
 #include <sstream>
 
-#include "file/File.h"
+
 #include "sockets/Sockets.h"
+#include "file/File.h"
 
 using namespace std;
 
+void shortExample();
 void testSocket();
 void testFile();
 
 int main(int argc, char** argv) {
+	testSocket();
+	testFile();
 
-    testSocket();
-    testFile();
-
-    cout << endl << "done." << endl;
-
-    return 1;// cin.get();
+	return cin.get();
 }
 
+
+void shortExample() {
+	try {
+		Socket sock("tweakers.net", "80");
+    
+		OutputStream& out = sock.getOutputStream();
+		InputStream& in   = sock.getInputStream();
+
+		out.write("GET / HTTP1.0\n\rhost: tweakers.net\n\r\n\r");
+
+		// Permit the server 1 second to come up with a reply.
+		#ifdef WIN32
+			Sleep(1000);
+		#else
+			usleep(1000);
+		#endif
+
+		int bytesAvailable = in.available();
+
+		string buff = in.read(bytesAvailable);
+
+		cout << buff << endl;
+	} catch(const SocketException& ex) {
+		cout << "err" << endl;
+	}
+}
 
 void testSocket() {
 try {
@@ -56,10 +81,16 @@ try {
     }
 }
 
-
 void testFile() {
 	File file("./");
+	
+
+	if(!file.exists()) {
+		cout << " path not found. " << endl;
+	}
+
 	cout << " Scanning " << file.getName() << " for files... " << endl;
+
 
     vector<File> files = file.listFiles();
 
