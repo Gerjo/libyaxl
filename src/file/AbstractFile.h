@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 
 using namespace std;
 
@@ -33,8 +34,18 @@ public:
 	virtual bool exists(void) = 0;
 	virtual long lastModified(void) = 0;
 	virtual vector<string> list(void) = 0;
-
     virtual vector<File> listFiles() = 0;
+
+    virtual int size() = 0;
+    virtual stringstream readAll() = 0;
+    virtual stringstream readLine() = 0;
+    virtual stringstream readSome(int len) = 0;
+
+
+    string readAll() {
+        stringstream tmp = readAll();
+        return tmp.str();
+    }
 
 	virtual string getName();
 };

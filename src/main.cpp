@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 void shortExample() {
 	try {
 		Socket sock("tweakers.net", "80");
-    
+
 		OutputStream& out = sock.getOutputStream();
 		InputStream& in   = sock.getInputStream();
 
@@ -83,7 +83,9 @@ try {
 
 void testFile() {
 	File file("./");
-	
+
+
+    file.size();
 
 	if(!file.exists()) {
 		cout << " path not found. " << endl;
@@ -101,7 +103,7 @@ void testFile() {
         if(file.isDirectory()) {
             cout << "/";
         }
-        
+
         cout << endl;
 	}
 
