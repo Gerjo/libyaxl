@@ -17,7 +17,7 @@ string AbstractFile::getCononicalName() {
     string name = getName();
     int len     = name.length();
 
-    while(name.substr(len - 1, len).compare("/") == 0) {
+    while(len > 1 && name.substr(len - 1, len).compare("/") == 0) {
         name = name.substr(0, len -1);
         len  = name.length();
     }
