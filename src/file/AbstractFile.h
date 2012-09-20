@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -36,10 +37,10 @@ public:
 	virtual vector<string> list(void) = 0;
     virtual vector<File> listFiles() = 0;
 
-    virtual int size() = 0;
-    virtual string readAll() = 0;
-    virtual string readLine() = 0;
-    virtual string readSome(int len) = 0;
+    virtual int size();
+    virtual string readAll();
+    virtual string readLine();
+    virtual string readSome(int len);
 
 	virtual string getName();
 };

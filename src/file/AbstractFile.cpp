@@ -27,3 +27,38 @@ string AbstractFile::getCononicalName() {
 
     return name;
 }
+
+
+
+string AbstractFile::readAll() {
+    ifstream fileStream;
+    fileStream.open(_path.c_str(), ios::in|ios::binary|ios::ate);
+
+    const int length = fileStream.tellg();
+    char memblock[length];
+
+    fileStream.seekg(0, ios::beg);
+    fileStream.read(memblock, length);
+    fileStream.close();
+
+    string asString(memblock, length);
+
+    return asString;
+}
+
+string AbstractFile::readLine() {
+    //stringstream meh;
+
+    //return meh;
+}
+
+string AbstractFile::readSome(int len) {
+    //stringstream meh;
+
+    //return meh;
+}
+
+int AbstractFile::size() {
+    return 0;
+}
+

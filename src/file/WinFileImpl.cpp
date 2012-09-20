@@ -95,7 +95,7 @@ vector<string> WinFileImpl::list() {
 		cout << " Broke out of the do while loop for error reasons :( " << endl;
 		exit(-1);
 	}
-	
+
 	FindClose(filesFound);
 
 	return files;
@@ -113,19 +113,4 @@ vector<File> WinFileImpl::listFiles() {
 	return files;
 }
 
-int WinFileImpl::size() {
-	return 0;
-}
-
-stringstream WinFileImpl::readAll() {
-	return stringstream();
-}
-
-stringstream WinFileImpl::readLine() {
-	return stringstream();
-}
-
-stringstream WinFileImpl::readSome(int len) {
-	return stringstream();
-}
 #endif // WIN32

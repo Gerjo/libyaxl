@@ -21,11 +21,6 @@ public:
 	virtual vector<string> list(void);
 	virtual vector<File> listFiles();
 
-	virtual int size();
-    virtual stringstream readAll();
-    virtual stringstream readLine();
-    virtual stringstream readSome(int len);
-
 private:
 	unsigned long _fileAttributes;
 	bool _areAttributesLoaded;
