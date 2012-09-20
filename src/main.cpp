@@ -5,6 +5,8 @@
 #include "sockets/Sockets.h"
 #include "file/File.h"
 
+#include "file/md5.h"
+
 using namespace std;
 
 void shortExample();
@@ -13,7 +15,7 @@ void scanFolder();
 void readFile();
 
 int main(int argc, char** argv) {
-	readFile();
+	//readFile();
     scanFolder();
 
     #ifdef WIN32
@@ -107,6 +109,8 @@ void scanFolder() {
 
         if(file.isDirectory()) {
             cout << "/";
+        } else {
+            cout << " (" << file.computeMD5() << ") ";
         }
 
         cout << endl;

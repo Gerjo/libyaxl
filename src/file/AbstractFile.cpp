@@ -90,8 +90,7 @@ void AbstractFile::openFileStream(void) {
         _fileStream = new ifstream();
         _fileStream->open(_path.c_str(), ios::in|ios::binary|ios::ate);
 
-        // Reset the internal pointer to the beginning.
-        _fileStream->seekg(0, ios::beg);
+        reset();
     }
 }
 
@@ -102,4 +101,24 @@ int AbstractFile::getRemainingSize() {
     int delta = size - pntr;
 
     return delta;
+}
+
+string AbstractFile::computeMD5(void) {
+    openFileStream();
+
+    int pointer = _fileStream->tellg();
+    reset();
+    MD5 md5(readAll());
+
+    _fileStream->seekg(pointer, ios::beg);
+
+    return md5.hexdigest();
+}
+
+void AbstractFile::reset() {
+    if(_fileStream != 0) {
+        _fileStream->seekg(0, ios::beg);
+    } else {
+        // exception! :(
+    }
 }

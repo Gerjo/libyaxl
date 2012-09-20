@@ -13,6 +13,8 @@
           <itemPath>src/file/PosixFileImpl.h</itemPath>
           <itemPath>src/file/WinFileImpl.cpp</itemPath>
           <itemPath>src/file/WinFileImpl.h</itemPath>
+          <itemPath>src/file/md5.cpp</itemPath>
+          <itemPath>src/file/md5.h</itemPath>
         </logicalFolder>
         <logicalFolder name="sockets" displayName="sockets" projectFiles="true">
           <itemPath>src/sockets/InputStream.cpp</itemPath>

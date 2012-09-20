@@ -9,6 +9,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "md5.h"
+
 using namespace std;
 
 #ifdef WIN32
@@ -49,6 +51,10 @@ public:
     virtual string readLine(const char& delimiter);
     virtual string readSome(int len);
 	virtual string getName();
+
+    virtual void reset();
+
+    string computeMD5(void);
 };
 
 #endif // ABSTRACTFILE_H

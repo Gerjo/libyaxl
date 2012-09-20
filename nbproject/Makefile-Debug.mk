@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/file/PosixFileImpl.o \
 	${OBJECTDIR}/src/sockets/SocketException.o \
+	${OBJECTDIR}/src/file/md5.o \
 	${OBJECTDIR}/src/file/AbstractFile.o \
 	${OBJECTDIR}/src/sockets/Socket.o \
 	${OBJECTDIR}/src/sockets/InputStream.o \
@@ -83,6 +84,11 @@ ${OBJECTDIR}/src/sockets/SocketException.o: src/sockets/SocketException.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/sockets
 	${RM} $@.d
 	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/SocketException.o src/sockets/SocketException.cpp
+
+${OBJECTDIR}/src/file/md5.o: src/file/md5.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/file
+	${RM} $@.d
+	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/md5.o src/file/md5.cpp
 
 ${OBJECTDIR}/src/file/AbstractFile.o: src/file/AbstractFile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/file
