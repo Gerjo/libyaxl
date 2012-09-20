@@ -37,9 +37,9 @@ public:
     virtual vector<File> listFiles() = 0;
 
     virtual int size() = 0;
-    virtual stringstream readAll() = 0;
-    virtual stringstream readLine() = 0;
-    virtual stringstream readSome(int len) = 0;
+    virtual string readAll() = 0;
+    virtual string readLine() = 0;
+    virtual string readSome(int len) = 0;
 
 	virtual string getName();
 };

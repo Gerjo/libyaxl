@@ -10,6 +10,8 @@
 #include <cstdlib>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <fstream>
+#include <sstream>
 
 #include "AbstractFile.h"
 
@@ -29,8 +31,13 @@ public:
     virtual bool exists(void);
 	virtual long lastModified(void);
 	virtual vector<string> list(void);
-
     virtual vector<File> listFiles();
+
+    virtual int size();
+    virtual string readAll();
+    virtual string readLine();
+    virtual string readSome(int len);
+
 
 private:
     int loadStat(void);

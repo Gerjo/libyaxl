@@ -9,11 +9,11 @@ using namespace std;
 
 void shortExample();
 void testSocket();
-void testFile();
+void scanFolder();
+void readFile();
 
 int main(int argc, char** argv) {
-	testSocket();
-	testFile();
+	readFile();
 
 	return cin.get();
 }
@@ -81,7 +81,7 @@ try {
     }
 }
 
-void testFile() {
+void scanFolder() {
 	File file("./");
 
 
@@ -108,4 +108,12 @@ void testFile() {
 	}
 
     cout << endl << "All done." << endl;
+}
+
+void readFile() {
+    File file("meh");
+
+    string in = file.readAll();
+
+    cout << in << endl;
 }
