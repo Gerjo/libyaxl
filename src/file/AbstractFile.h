@@ -30,10 +30,8 @@ protected:
 
     string _path;
     ifstream* _inputFileStream;
-    ofstream* _outputFileStream;
 
     void openInputFileStream(bool createFile = false);
-    void openOutputFileStream(bool createFile = false);
     int getRemainingSize(void);
 
 public:
@@ -58,12 +56,15 @@ public:
 
     /*
      // TODO:
-     virtual bool createNewFile();
      virtual bool mkDir();
      virtual bool mkDirs();
 */
     virtual void write(const string& data);
-    virtual void write(char* data, const int length);
+    virtual void write(const char* data, const int length);
+    virtual void append(const string& data);
+    virtual void append(const char* data, const int length);
+
+
     virtual bool createNewFile();
 
     string computeMD5(void);

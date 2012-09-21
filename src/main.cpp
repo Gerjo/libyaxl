@@ -139,13 +139,18 @@ void readFile() {
 
 
 void writingFiles() {
-    cout << "a" << endl;
-    File valid("valid");
+    cout << "Writing..." << endl;
+    File valid("valid.txt");
     valid.createNewFile();
-    valid.write(string("teeheee"));
-    cout << "b" << endl;
+    valid.write(string("123456"));
+    valid.write(string("mehmeh"));
+    valid.append(string(" THE END"));
+    valid.append(string(" of this file..."));
 
-    File invalid("invalid");
+
+    cout << "Finished." << endl << endl;
+
+    File invalid("invalid.txt");
 
     cout << " writing: " << endl;
 
