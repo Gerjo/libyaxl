@@ -35,6 +35,9 @@ public:
 
     virtual int size();
 
+protected:
+    virtual void mkDir(const string& dirName);
+
 private:
     int loadStat(void);
     struct stat statDetails;

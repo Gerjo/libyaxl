@@ -166,5 +166,30 @@ bool AbstractFile::createNewFile() {
     return false;
 }
 
+void AbstractFile::mkDir() {
+    mkDir(_path);
+}
+
+void AbstractFile::mkDirs() {
+    if(!isDirectory()) {
+
+        stringstream ss(getCanonicalName());
+        string folder;
+        string path;
+        while(std::getline(ss, folder, '/')) {
+
+            // If the user creates a path like foo///meh//bar// the extra
+            // slashes will be skipped. In reality "getCanonicalName" should
+            // do this though.
+            if(folder.length() == 0) {
+                continue;
+            }
+
+            mkDir(path += folder + "/");
+        }
+    }
+}
+
+
 }
 }

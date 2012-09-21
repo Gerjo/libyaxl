@@ -16,12 +16,15 @@ void testSocket();
 void scanFolder();
 void readFile();
 void writingFiles();
+void createFolders();
 
 int main(int argc, char** argv) {
 	//readFile();
     scanFolder();
 
     writingFiles();
+
+    createFolders();
 
     #ifdef WIN32
         return cin.get();
@@ -159,4 +162,13 @@ void writingFiles() {
     invalid.write(string("adasdasdsad"));
 
     cout << "done!" << endl;
+}
+
+void createFolders() {
+    cout << "making dirs..." << endl;
+    File folder("foo///bar///charlie");
+
+    folder.mkDirs();
+
+    cout << "done with that. " << endl;
 }

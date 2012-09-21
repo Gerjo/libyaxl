@@ -88,6 +88,11 @@ int PosixFileImpl::size() {
     return AbstractFile::size();
 }
 
+
+void PosixFileImpl::mkDir(const string& dirName) {
+    mkdir(dirName.c_str(), 0775);
+}
+
 }
 }
 

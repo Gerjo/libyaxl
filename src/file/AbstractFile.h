@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <algorithm>
 #include <sstream>
@@ -10,7 +11,6 @@
 #include <iostream>
 
 #include "md5.h"
-
 
 
 namespace yaxl {
@@ -39,6 +39,10 @@ protected:
     void openInputFileStream(bool createFile = false);
     int getRemainingSize(void);
 
+    // OS specific implementation. The other mkDir methods will
+    // simply call this one.
+    virtual void mkDir(const string& dirName) = 0;
+
 public:
 	virtual ~AbstractFile();
 
@@ -57,18 +61,16 @@ public:
     virtual string readSome(int len);
 	virtual string getName();
 
-    virtual void reset();
 
-    /*
-     // TODO:
-     virtual bool mkDir();
-     virtual bool mkDirs();
-*/
+
+    virtual void mkDir();
+    virtual void mkDirs();
+
     virtual void write(const string& data);
     virtual void write(const char* data, const int length);
     virtual void append(const string& data);
     virtual void append(const char* data, const int length);
-
+    virtual void reset();
 
     virtual bool createNewFile();
 

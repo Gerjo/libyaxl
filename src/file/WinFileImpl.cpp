@@ -2,6 +2,9 @@
 
 #ifdef WIN32
 
+namespace yaxl {
+namespace file {
+
 WinFileImpl::WinFileImpl(string path) : AbstractFile(path), _areAttributesLoaded(false) {
 
 }
@@ -111,6 +114,13 @@ vector<File> WinFileImpl::listFiles() {
 	}
 
 	return files;
+}
+
+void WinFileImpl::mkDir(const string& dirName) {
+    _mkdir(dirName.c_str());
+}
+
+}
 }
 
 #endif // WIN32

@@ -3,8 +3,12 @@
 #ifdef WIN32
 
 #include <Windows.h>
+#include <direct.h>
 
 #include "AbstractFile.h"
+
+namespace yaxl {
+namespace file {
 
 class WinFileImpl;
 typedef WinFileImpl File;
@@ -21,6 +25,9 @@ public:
 	virtual vector<string> list(void);
 	virtual vector<File> listFiles();
 
+protected:
+    virtual void mkDir(const string& dirName);
+
 private:
 	unsigned long _fileAttributes;
 	bool _areAttributesLoaded;
@@ -32,6 +39,9 @@ private:
 	FILETIME _timeLastAccess;
 	FILETIME _timeLastWrite;
 };
+
+}
+}
 
 #endif // WIN32
 #endif // WINFILEIMPL_H
