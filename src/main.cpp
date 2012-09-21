@@ -13,10 +13,13 @@ void shortExample();
 void testSocket();
 void scanFolder();
 void readFile();
+void writingFiles();
 
 int main(int argc, char** argv) {
 	//readFile();
     scanFolder();
+
+    writingFiles();
 
     #ifdef WIN32
         return cin.get();
@@ -91,9 +94,6 @@ try {
 void scanFolder() {
 	File file("./");
 
-
-    file.size();
-
 	if(!file.exists()) {
 		cout << " path not found. " << endl;
 	}
@@ -105,6 +105,7 @@ void scanFolder() {
 
     for(vector<File>::iterator it = files.begin(); it != files.end(); ++it) {
         File& file = (*it);
+
         cout << file.getName();
 
         if(file.isDirectory()) {
@@ -134,4 +135,21 @@ void readFile() {
     cout << "What's left: " << file.readAll() << endl;
 
     cout << "File size: " << file.size() << " bytes" << endl;
+}
+
+
+void writingFiles() {
+    cout << "a" << endl;
+    File valid("valid");
+    valid.createNewFile();
+    valid.write(string("teeheee"));
+    cout << "b" << endl;
+
+    File invalid("invalid");
+
+    cout << " writing: " << endl;
+
+    invalid.write(string("adasdasdsad"));
+
+    cout << "done!" << endl;
 }

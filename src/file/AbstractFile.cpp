@@ -2,13 +2,19 @@
 
 
 AbstractFile::AbstractFile(string path) : _path(path) {
-    _fileStream = 0;
+    _inputFileStream  = 0;
+    _outputFileStream = 0;
 }
 
 AbstractFile::~AbstractFile() {
-    if(_fileStream != 0) {
-        _fileStream->close();
-        delete _fileStream;
+    if(_inputFileStream != 0) {
+        _inputFileStream->close();
+        delete _inputFileStream;
+    }
+
+    if(_outputFileStream != 0) {
+        _outputFileStream->close();
+        delete _outputFileStream;
     }
 }
 
@@ -33,22 +39,22 @@ string AbstractFile::getCanonicalName() {
 
 
 string AbstractFile::readAll() {
-    openFileStream();
+    openInputFileStream();
 
     const int length = getRemainingSize();
     char memblock[length];
 
-    _fileStream->read(memblock, length);
+    _inputFileStream->read(memblock, length);
 
     return string(memblock, length);
 }
 
 string AbstractFile::readLine(const char& delimiter) {
-    openFileStream();
+    openInputFileStream();
 
     string asString;
 
-    std::getline(*_fileStream, asString, delimiter);
+    std::getline(*_inputFileStream, asString, delimiter);
 
     return asString;
 }
@@ -58,67 +64,107 @@ string AbstractFile::readLine() {
 }
 
 string AbstractFile::readSome(int len) {
-    openFileStream();
+    openInputFileStream();
 
     int length = getRemainingSize();
     int limit  = min(len, length);
 
     char memblock[length];
 
-    _fileStream->read(memblock, limit);
+    _inputFileStream->read(memblock, limit);
 
     return string(memblock, limit);
 }
 
 int AbstractFile::size() {
-    openFileStream();
+    openInputFileStream();
 
     // Take note of the current internal pointer offset:
-    const int pointerPos = _fileStream->tellg();
+    const int pointerPos = _inputFileStream->tellg();
 
-    _fileStream->seekg(0, ios::end);
-    int fileSize = _fileStream->tellg();
+    _inputFileStream->seekg(0, ios::end);
+    int fileSize = _inputFileStream->tellg();
 
     // Restore the internal pointer.
-    _fileStream->seekg(pointerPos, ios::beg);
+    _inputFileStream->seekg(pointerPos, ios::beg);
 
     return fileSize;
 }
 
-void AbstractFile::openFileStream(void) {
-    if(_fileStream == 0) {
-        _fileStream = new ifstream();
-        _fileStream->open(_path.c_str(), ios::in|ios::binary|ios::ate);
+void AbstractFile::openInputFileStream(bool createFile) {
+    if(!createFile && !isFile()) {
+        cout << " cannot open '" << _path << "' for reading. no such file. " << endl;
+        cout << "isFile?" << (int) isFile() << " createFile?" << createFile << endl;
+        exit(23);
+    }
+
+    if(_inputFileStream == 0) {
+        _inputFileStream = new ifstream();
+        _inputFileStream->open(_path.c_str(), ios::in | ios::binary);
 
         reset();
     }
 }
 
+void AbstractFile::openOutputFileStream(bool createFile) {
+    if(!createFile && !isFile()) {
+        cout << " cannot open '" << _path << "' for writing. no such file. " << endl;
+        exit(23);
+    }
+
+    if(_outputFileStream == 0) {
+        _outputFileStream = new ofstream();
+        _outputFileStream->open(_path.c_str(), ios::out | ios::binary);
+    }
+}
 
 int AbstractFile::getRemainingSize() {
     int size  = this->size();
-    int pntr  = _fileStream->tellg();
+    int pntr  = _inputFileStream->tellg();
     int delta = size - pntr;
 
     return delta;
 }
 
 string AbstractFile::computeMD5(void) {
-    openFileStream();
+    openInputFileStream();
 
-    int pointer = _fileStream->tellg();
+    int pointer = _inputFileStream->tellg();
     reset();
     MD5 md5(readAll());
 
-    _fileStream->seekg(pointer, ios::beg);
+    _inputFileStream->seekg(pointer, ios::beg);
 
     return md5.hexdigest();
 }
 
 void AbstractFile::reset() {
-    if(_fileStream != 0) {
-        _fileStream->seekg(0, ios::beg);
+    if(_inputFileStream != 0) {
+        _inputFileStream->seekg(0, ios::beg);
     } else {
         // exception! :(
     }
+}
+
+void AbstractFile::write(const string& data) {
+    openOutputFileStream();
+
+    _outputFileStream->write(data.c_str(), data.length());
+}
+
+void AbstractFile::write(char* data, const int length) {
+    openOutputFileStream();
+
+    _outputFileStream->write(data, length);
+}
+
+bool AbstractFile::createNewFile() {
+    if(!isDirectory()) {
+        if(!isFile()) {
+            openOutputFileStream(true);
+            return true;
+        }
+    }
+
+    return false;
 }

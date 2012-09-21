@@ -29,9 +29,11 @@ protected:
     virtual string getCanonicalName();
 
     string _path;
-    ifstream* _fileStream;
+    ifstream* _inputFileStream;
+    ofstream* _outputFileStream;
 
-    void openFileStream(void);
+    void openInputFileStream(bool createFile = false);
+    void openOutputFileStream(bool createFile = false);
     int getRemainingSize(void);
 
 public:
@@ -55,15 +57,14 @@ public:
     virtual void reset();
 
     /*
-     // TODO: 
+     // TODO:
      virtual bool createNewFile();
      virtual bool mkDir();
      virtual bool mkDirs();
-
-     virtual int write(const string& data);
-     virtual int write(char* data, const int length);
-
-     */
+*/
+    virtual void write(const string& data);
+    virtual void write(char* data, const int length);
+    virtual bool createNewFile();
 
     string computeMD5(void);
 };
