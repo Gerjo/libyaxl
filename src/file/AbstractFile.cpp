@@ -8,11 +8,7 @@ AbstractFile::AbstractFile(string path) : _path(path) {
 }
 
 AbstractFile::~AbstractFile() {
-    if(_inputFileStream != 0) {
-        _inputFileStream->sync();
-        _inputFileStream->close();
-        delete _inputFileStream;
-    }
+    closeStreams();
 }
 
 string AbstractFile::getName() {
@@ -86,6 +82,14 @@ int AbstractFile::size() {
     _inputFileStream->seekg(pointerPos, ios::beg);
 
     return fileSize;
+}
+
+void AbstractFile::closeStreams(void) {
+    if(_inputFileStream != 0) {
+        _inputFileStream->sync();
+        _inputFileStream->close();
+        delete _inputFileStream;
+    }
 }
 
 void AbstractFile::openInputFileStream(bool createFile) {
@@ -190,6 +194,16 @@ void AbstractFile::mkDirs() {
     }
 }
 
+bool AbstractFile::remove(void) {
+
+    if(exists()) {
+        closeStreams();
+
+        return ::remove(_path.c_str()) == 0;
+    }
+
+    return false;
+}
 
 }
 }

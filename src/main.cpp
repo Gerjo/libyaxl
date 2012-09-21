@@ -171,4 +171,9 @@ void createFolders() {
     folder.mkDirs();
 
     cout << "done with that. " << endl;
+
+
+
+    File toDelete("deleteme");
+    cout << "deleted? " << (int)toDelete.remove();
 }
