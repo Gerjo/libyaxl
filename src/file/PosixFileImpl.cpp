@@ -26,7 +26,7 @@ int PosixFileImpl::loadStat(void) {
 
 bool PosixFileImpl::isFile(void) {
 
-    if(loadStat() == 0 && !(statDetails.st_mode & S_IFMT) == S_IFDIR) {
+    if(loadStat() == 0 && !((statDetails.st_mode & S_IFMT) == S_IFDIR)) {
         return true;
     }
 
