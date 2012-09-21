@@ -1,5 +1,7 @@
 #include "AbstractFile.h"
 
+namespace yaxl {
+namespace file {
 
 AbstractFile::AbstractFile(string path) : _path(path) {
     _inputFileStream  = 0;
@@ -162,4 +164,7 @@ bool AbstractFile::createNewFile() {
     }
 
     return false;
+}
+
+}
 }

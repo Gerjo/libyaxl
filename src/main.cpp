@@ -7,6 +7,9 @@
 
 #include "file/md5.h"
 
+
+using namespace yaxl;
+using namespace file;
 using namespace std;
 
 void shortExample();

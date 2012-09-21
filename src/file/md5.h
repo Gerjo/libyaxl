@@ -46,6 +46,9 @@ documentation and/or software.
 // Added missing include. -- Gerjo
 #include <cstring>
 
+namespace yaxl {
+namespace file {
+
 // a small class for calculating MD5 hashes of strings or byte arrays
 // it is not meant to be fast or secure
 //
@@ -98,5 +101,8 @@ private:
 };
 
 std::string md5(const std::string str);
+
+}
+}
 
 #endif

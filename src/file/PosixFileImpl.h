@@ -13,6 +13,8 @@
 
 #include "AbstractFile.h"
 
+namespace yaxl {
+namespace file {
 
 class PosixFileImpl;
 typedef PosixFileImpl File;
@@ -37,6 +39,9 @@ private:
     int loadStat(void);
     struct stat statDetails;
 };
+
+}
+}
 
 #endif  /* !WIN32 */
 #endif	/* POSIXFILEIMPL_H */

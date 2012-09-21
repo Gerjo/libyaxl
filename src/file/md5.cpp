@@ -36,6 +36,8 @@ documentation and/or software.
 /* system implementation headers */
 #include <stdio.h>
 
+namespace yaxl {
+namespace file {
 
 // Constants for MD5Transform routine.
 #define S11 7
@@ -359,4 +361,7 @@ std::string md5(const std::string str)
     MD5 md5 = MD5(str);
 
     return md5.hexdigest();
+}
+
+}
 }

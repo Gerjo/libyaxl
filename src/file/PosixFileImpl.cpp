@@ -2,6 +2,9 @@
 
 #ifndef WIN32
 
+namespace yaxl {
+namespace file {
+
 PosixFileImpl::PosixFileImpl(string path) : AbstractFile(path) {
 
 }
@@ -83,6 +86,9 @@ int PosixFileImpl::size() {
     //return statDetails.st_size;
 
     return AbstractFile::size();
+}
+
+}
 }
 
 #endif  /* !WIN32 */

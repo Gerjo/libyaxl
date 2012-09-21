@@ -11,6 +11,11 @@
 
 #include "md5.h"
 
+
+
+namespace yaxl {
+namespace file {
+
 using namespace std;
 
 #ifdef WIN32
@@ -69,6 +74,9 @@ public:
 
     string computeMD5(void);
 };
+
+}
+}
 
 #endif // ABSTRACTFILE_H
 
