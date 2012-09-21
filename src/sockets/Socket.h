@@ -28,6 +28,9 @@
 	#define MSG_NOSIGNAL 0
 #endif
 
+namespace yaxl {
+namespace socket {
+
 class OutputStream;
 class InputStream;
 
@@ -61,6 +64,9 @@ private:
     const int getSocketFd() const;
     void close(const int whom);
 };
+
+}
+}
 
 #endif	/* SOCKET_H */
 

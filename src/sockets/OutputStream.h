@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   OutputStream.h
  * Author: gerjo
  *
@@ -20,6 +20,9 @@
 
 #include "Socket.h"
 
+namespace yaxl {
+namespace socket {
+
 using namespace std;
 
 class OutputStream {
@@ -29,11 +32,14 @@ public:
 	void write(const string stringToSend);
     void write(const char* bytes);
     void write(const char* bytes, const int len);
-    
+
 private:
 	OutputStream(const OutputStream& orig);
     Socket& socket;
 };
+
+}
+}
 
 #endif	/* OUTPUTSTREAM_H */
 

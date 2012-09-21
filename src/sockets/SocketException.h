@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   SocketException.h
  * Author: gerjo
  *
@@ -11,6 +11,9 @@
 #include <exception>
 #include <string>
 
+namespace yaxl {
+namespace socket {
+
 using namespace std;
 
 class SocketException {
@@ -21,6 +24,9 @@ public:
 private:
     string error;
 };
+
+}
+}
 
 #endif	/* SOCKETEXCEPTION_H */
 

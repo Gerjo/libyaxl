@@ -3,7 +3,8 @@
 #include "OutputStream.h"
 #include "InputStream.h"
 
-
+namespace yaxl {
+namespace socket {
 
 Socket::Socket(string address, string port) : _isConnected(false) {
     this->address = address;
@@ -110,4 +111,7 @@ void Socket::close(const int whom) {
 
 const bool Socket::isConnected(void) {
 	return _isConnected;
+}
+
+}
 }

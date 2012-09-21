@@ -2,14 +2,13 @@
 #include <sstream>
 
 
-#include "sockets/Sockets.h"
-#include "file/File.h"
+#include "yaxl.h"
 
-#include "file/md5.h"
 
 
 using namespace yaxl;
 using namespace file;
+using namespace socket;
 using namespace std;
 
 void shortExample();

@@ -1,7 +1,7 @@
-/* 
+/*
  * File:   InputStream.cpp
  * Author: gerjo
- * 
+ *
  * Created on September 17, 2012, 6:50 PM
  */
 
@@ -9,8 +9,11 @@
 
 #include "InputStream.h"
 
+namespace yaxl {
+namespace socket {
+
 InputStream::InputStream(Socket& socket) : socket(socket) {
-    
+
 }
 
 InputStream::InputStream(const InputStream& orig) : socket(orig.socket) {
@@ -26,7 +29,7 @@ void InputStream::concatToBuffer(char* otherBuffer, const int len) {
 int InputStream::available(void) {
     const int socketFd = socket.getSocketFd();
 
-    // Using select for time being. Will research non-blocking IO in 
+    // Using select for time being. Will research non-blocking IO in
     // due time. -- Gerjo
     timeval timeout = {0, 0};
     fd_set fds;
@@ -41,7 +44,7 @@ int InputStream::available(void) {
         const int readChunkSize = 1024;
         char buff2[readChunkSize];
         int bytesRead;
-        
+
         do {
             bytesRead = ::recv(socketFd, reinterpret_cast<char*>(&buff2), readChunkSize, 0);
 
@@ -49,16 +52,16 @@ int InputStream::available(void) {
             if(bytesRead == 0) {
                 return buffer.size();
             }
-            
+
             if(bytesRead == -1) {
                 perror("Cannot read because");
                 exit(1);
             }
-            
+
             concatToBuffer(buff2, bytesRead);
-        
+
 		} while(bytesRead >= readChunkSize);
-        
+
         return buffer.size();
     }
 
@@ -67,23 +70,23 @@ int InputStream::available(void) {
 
 string InputStream::read(const int numBytes) {
     const int limit = calculateReadLimit(numBytes);
-    
+
     stringstream str;
-    
+
     for(int i = 0; i < limit; ++i) {
         str << shiftBuffer();
     }
-    
+
     return str.str();
 }
 
 char InputStream::read(void) {
     const int limit = calculateReadLimit(1);
-    
+
     if(limit > 0) {
         return shiftBuffer();
     }
-    
+
     // All empty, nothing to return. Java would return NULL here,
     // but C++ cannot. Possibly will throw an exception here.
     return '\0';
@@ -91,7 +94,7 @@ char InputStream::read(void) {
 
 void InputStream::skip(const int skipBytes) {
     const int limit = calculateReadLimit(skipBytes);
-    
+
     // Dispose the characters from the buffer.
     for(int i = 0; i < limit; ++i) {
         buffer.pop_front();
@@ -100,11 +103,11 @@ void InputStream::skip(const int skipBytes) {
 
 const inline int InputStream::calculateReadLimit(const int requestSize) {
     int bufferSize = buffer.size();
-    
+
     if(bufferSize < requestSize) {
         bufferSize = this->available();
     }
-    
+
     return min(bufferSize, requestSize);
 }
 
@@ -112,4 +115,7 @@ char inline InputStream::shiftBuffer(void) {
     char tmp = buffer.front();
     buffer.pop_front();
     return tmp;
+}
+
+}
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   InputStream.h
  * Author: gerjo
  *
@@ -27,6 +27,9 @@
 
 #include "Socket.h"
 
+namespace yaxl {
+namespace socket {
+
 using namespace std;
 
 class InputStream {
@@ -36,17 +39,20 @@ public:
     string read(const int bytes);
     int available(void) ;
     void skip(const int amount);
-    
+
 private:
 	InputStream(const InputStream& orig);
     Socket& socket;
     deque<char> buffer;
-    
+
     void concatToBuffer(char* otherBuffer, const int len);
-    
+
     const int calculateReadLimit(const int requestSize);
     char shiftBuffer(void);
 };
+
+}
+}
 
 #endif	/* INPUTSTREAM_H */
 

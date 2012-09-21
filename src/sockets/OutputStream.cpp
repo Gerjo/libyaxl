@@ -1,15 +1,18 @@
-/* 
+/*
  * File:   OutputStream.cpp
  * Author: gerjo
- * 
+ *
  * Created on September 17, 2012, 6:30 PM
  */
 
 #include "OutputStream.h"
 #include "Socket.h"
 
+namespace yaxl {
+namespace socket {
+
 OutputStream::OutputStream(Socket& socket) : socket(socket) {
-    
+
 }
 
 OutputStream::OutputStream(const OutputStream& orig) : socket(orig.socket) {
@@ -34,7 +37,7 @@ void OutputStream::write(const char* bytes, const int sendLength) {
     const char* start  = bytes;
 	int bytesSent = 0;
 	int total     = 0;
-	
+
 	do {
 		bytesSent = ::send(socketFd, (start + total), sendLength, MSG_NOSIGNAL);
 
@@ -42,7 +45,7 @@ void OutputStream::write(const char* bytes, const int sendLength) {
 			if (errno == EINTR || errno == EAGAIN) {
 				continue;
 			}
-            
+
 			perror("Cannot send to client because");
 			break;
 		}
@@ -56,3 +59,5 @@ void OutputStream::write(const char* bytes, const int sendLength) {
 	} while (true);
 }
 
+}
+}
