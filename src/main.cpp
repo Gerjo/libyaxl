@@ -56,7 +56,7 @@ void shortExample() {
 
 		cout << buff << endl;
 	} catch(const SocketException& ex) {
-		cout << "err" << endl;
+		cout << "err" << ex.what() << endl;
 	}
 }
 
@@ -92,7 +92,7 @@ try {
         cout << buff.str() << endl;
 
     } catch(const SocketException& ex) {
-        cout << "Unable to connect to master server." << endl;
+		cout << ex.what() << endl;
     }
 }
 
