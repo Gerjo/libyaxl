@@ -35,11 +35,15 @@ string AbstractFile::readAll() {
     openInputFileStream();
 
     const int length = getRemainingSize();
-    char memblock[length];
+    char* memblock = new char[length];
 
     _inputFileStream->read(memblock, length);
 
-    return string(memblock, length);
+	string str(memblock, length);
+
+	delete[] memblock;
+
+    return str;
 }
 
 string AbstractFile::readLine(const char& delimiter) {
@@ -62,11 +66,15 @@ string AbstractFile::readSome(int len) {
     int length = getRemainingSize();
     int limit  = min(len, length);
 
-    char memblock[length];
+    char* memblock = new char[length];
 
     _inputFileStream->read(memblock, limit);
 
-    return string(memblock, limit);
+	string str(memblock, limit);
+
+	delete[] memblock;
+
+    return str;
 }
 
 int AbstractFile::size() {
