@@ -21,6 +21,8 @@ public:
     SocketException(string error);
     SocketException(const SocketException& orig);
     virtual ~SocketException();
+
+	virtual string what() const;
 private:
     string error;
 };

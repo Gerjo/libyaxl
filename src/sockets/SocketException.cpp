@@ -19,5 +19,9 @@ SocketException::SocketException(const SocketException& orig) {
 SocketException::~SocketException() {
 }
 
+string SocketException::what() const {
+	return error;
+}
+
 }
 }
