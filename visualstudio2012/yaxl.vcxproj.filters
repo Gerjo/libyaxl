@@ -6,14 +6,26 @@
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Source Files\sockets">
-      <UniqueIdentifier>{c848603e-12c2-4720-b42f-c79b05247f2a}</UniqueIdentifier>
+      <UniqueIdentifier>{6b586ff2-c536-415d-887a-9dddd3045f18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{a59314ce-7e8c-4003-b772-1e2497dff1e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\examples">
+      <UniqueIdentifier>{c0e91a5d-5c27-4db6-a252-7fa68cd1fac1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\file">
-      <UniqueIdentifier>{36e22f5a-e405-4500-9bac-8a38e725cf28}</UniqueIdentifier>
+      <UniqueIdentifier>{b7d9cec6-1b92-4a28-a332-c9dd50c92d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\concurrency">
+      <UniqueIdentifier>{1e586bee-6a5f-4c60-8f7d-77b8c7598692}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\file\AbstractFile.cpp">
+      <Filter>Source Files\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\file\md5.cpp">
       <Filter>Source Files\file</Filter>
     </ClCompile>
     <ClCompile Include="..\src\file\PosixFileImpl.cpp">
@@ -21,6 +33,9 @@
     </ClCompile>
     <ClCompile Include="..\src\file\WinFileImpl.cpp">
       <Filter>Source Files\file</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\examples\main.cpp">
+      <Filter>Source Files\examples</Filter>
     </ClCompile>
     <ClCompile Include="..\src\sockets\InputStream.cpp">
       <Filter>Source Files\sockets</Filter>
@@ -31,14 +46,8 @@
     <ClCompile Include="..\src\sockets\Socket.cpp">
       <Filter>Source Files\sockets</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\sockets\SocketException.cpp">
-      <Filter>Source Files\sockets</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\file\md5.cpp">
-      <Filter>Source Files\file</Filter>
+    <ClCompile Include="..\src\concurrency\Thread.cpp">
+      <Filter>Source Files\concurrency</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,11 +57,26 @@
     <ClInclude Include="..\src\file\File.h">
       <Filter>Source Files\file</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\file\FileException.h">
+      <Filter>Source Files\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\file\md5.h">
+      <Filter>Source Files\file</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\file\PosixFileImpl.h">
       <Filter>Source Files\file</Filter>
     </ClInclude>
     <ClInclude Include="..\src\file\WinFileImpl.h">
       <Filter>Source Files\file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common\YaxlException.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\examples\SomeRunnable.h">
+      <Filter>Source Files\examples</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\examples\SomeThread.h">
+      <Filter>Source Files\examples</Filter>
     </ClInclude>
     <ClInclude Include="..\src\sockets\InputStream.h">
       <Filter>Source Files\sockets</Filter>
@@ -69,8 +93,20 @@
     <ClInclude Include="..\src\sockets\Sockets.h">
       <Filter>Source Files\sockets</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\file\md5.h">
-      <Filter>Source Files\file</Filter>
+    <ClInclude Include="..\src\yaxl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\concurrency\concurrency.h">
+      <Filter>Source Files\concurrency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\concurrency\ConcurrencyException.h">
+      <Filter>Source Files\concurrency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\concurrency\Runnable.h">
+      <Filter>Source Files\concurrency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\concurrency\Thread.h">
+      <Filter>Source Files\concurrency</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

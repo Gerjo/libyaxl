@@ -10,6 +10,38 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\concurrency\Thread.cpp" />
+    <ClCompile Include="..\src\examples\main.cpp" />
+    <ClCompile Include="..\src\file\AbstractFile.cpp" />
+    <ClCompile Include="..\src\file\md5.cpp" />
+    <ClCompile Include="..\src\file\PosixFileImpl.cpp" />
+    <ClCompile Include="..\src\file\WinFileImpl.cpp" />
+    <ClCompile Include="..\src\sockets\InputStream.cpp" />
+    <ClCompile Include="..\src\sockets\OutputStream.cpp" />
+    <ClCompile Include="..\src\sockets\Socket.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\common\YaxlException.h" />
+    <ClInclude Include="..\src\concurrency\concurrency.h" />
+    <ClInclude Include="..\src\concurrency\ConcurrencyException.h" />
+    <ClInclude Include="..\src\concurrency\Runnable.h" />
+    <ClInclude Include="..\src\concurrency\Thread.h" />
+    <ClInclude Include="..\src\examples\SomeRunnable.h" />
+    <ClInclude Include="..\src\examples\SomeThread.h" />
+    <ClInclude Include="..\src\file\AbstractFile.h" />
+    <ClInclude Include="..\src\file\File.h" />
+    <ClInclude Include="..\src\file\FileException.h" />
+    <ClInclude Include="..\src\file\md5.h" />
+    <ClInclude Include="..\src\file\PosixFileImpl.h" />
+    <ClInclude Include="..\src\file\WinFileImpl.h" />
+    <ClInclude Include="..\src\sockets\InputStream.h" />
+    <ClInclude Include="..\src\sockets\OutputStream.h" />
+    <ClInclude Include="..\src\sockets\Socket.h" />
+    <ClInclude Include="..\src\sockets\SocketException.h" />
+    <ClInclude Include="..\src\sockets\Sockets.h" />
+    <ClInclude Include="..\src\yaxl.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -75,29 +107,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\src\file\AbstractFile.cpp" />
-    <ClCompile Include="..\src\file\md5.cpp" />
-    <ClCompile Include="..\src\file\PosixFileImpl.cpp" />
-    <ClCompile Include="..\src\file\WinFileImpl.cpp" />
-    <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\sockets\InputStream.cpp" />
-    <ClCompile Include="..\src\sockets\OutputStream.cpp" />
-    <ClCompile Include="..\src\sockets\Socket.cpp" />
-    <ClCompile Include="..\src\sockets\SocketException.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\src\file\AbstractFile.h" />
-    <ClInclude Include="..\src\file\File.h" />
-    <ClInclude Include="..\src\file\md5.h" />
-    <ClInclude Include="..\src\file\PosixFileImpl.h" />
-    <ClInclude Include="..\src\file\WinFileImpl.h" />
-    <ClInclude Include="..\src\sockets\InputStream.h" />
-    <ClInclude Include="..\src\sockets\OutputStream.h" />
-    <ClInclude Include="..\src\sockets\Socket.h" />
-    <ClInclude Include="..\src\sockets\SocketException.h" />
-    <ClInclude Include="..\src\sockets\Sockets.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
