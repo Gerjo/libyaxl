@@ -2,7 +2,7 @@
 #include <sstream>
 
 
-#include "yaxl.h"
+#include "../yaxl.h"
 
 using namespace yaxl;
 using namespace file;

@@ -6,6 +6,10 @@
         <itemPath>src/concurrency/Runnable.h</itemPath>
         <itemPath>src/concurrency/Thread.cpp</itemPath>
         <itemPath>src/concurrency/Thread.h</itemPath>
+        <itemPath>src/concurrency/concurrency.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="examples" displayName="examples" projectFiles="true">
+        <itemPath>src/examples/main.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="file" displayName="file" projectFiles="true">
         <itemPath>src/file/AbstractFile.cpp</itemPath>
@@ -29,7 +33,6 @@
         <itemPath>src/sockets/SocketException.h</itemPath>
         <itemPath>src/sockets/Sockets.h</itemPath>
       </logicalFolder>
-      <itemPath>src/main.cpp</itemPath>
       <itemPath>src/yaxl.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"

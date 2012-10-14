@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/file/PosixFileImpl.o \
 	${OBJECTDIR}/src/file/md5.o \
 	${OBJECTDIR}/src/sockets/SocketException.o \
@@ -44,6 +43,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/sockets/InputStream.o \
 	${OBJECTDIR}/src/file/WinFileImpl.o \
 	${OBJECTDIR}/src/concurrency/Thread.o \
+	${OBJECTDIR}/src/examples/main.o \
 	${OBJECTDIR}/src/sockets/OutputStream.o
 
 
@@ -70,11 +70,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libyaxl: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libyaxl ${OBJECTFILES} ${LDLIBSOPTIONS} 
-
-${OBJECTDIR}/src/main.o: src/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 ${OBJECTDIR}/src/file/PosixFileImpl.o: src/file/PosixFileImpl.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/file
@@ -115,6 +110,11 @@ ${OBJECTDIR}/src/concurrency/Thread.o: src/concurrency/Thread.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/concurrency
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/concurrency/Thread.o src/concurrency/Thread.cpp
+
+${OBJECTDIR}/src/examples/main.o: src/examples/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/examples
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/examples/main.o src/examples/main.cpp
 
 ${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sockets
