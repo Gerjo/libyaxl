@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=yaxl
+PROJECTNAME=libyaxl
 
 # Active Configuration
 DEFAULTCONF=Debug

@@ -37,12 +37,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/main.o \
 	${OBJECTDIR}/src/file/PosixFileImpl.o \
-	${OBJECTDIR}/src/sockets/SocketException.o \
 	${OBJECTDIR}/src/file/md5.o \
+	${OBJECTDIR}/src/sockets/SocketException.o \
 	${OBJECTDIR}/src/file/AbstractFile.o \
 	${OBJECTDIR}/src/sockets/Socket.o \
 	${OBJECTDIR}/src/sockets/InputStream.o \
 	${OBJECTDIR}/src/file/WinFileImpl.o \
+	${OBJECTDIR}/src/concurrency/Thread.o \
 	${OBJECTDIR}/src/sockets/OutputStream.o
 
 
@@ -50,8 +51,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-std=c++0x -lpthread
+CXXFLAGS=-std=c++0x -lpthread
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -64,56 +65,61 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/yaxl
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libyaxl
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/yaxl: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libyaxl: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/yaxl ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libyaxl ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 ${OBJECTDIR}/src/file/PosixFileImpl.o: src/file/PosixFileImpl.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/file
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/PosixFileImpl.o src/file/PosixFileImpl.cpp
-
-${OBJECTDIR}/src/sockets/SocketException.o: src/sockets/SocketException.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/SocketException.o src/sockets/SocketException.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/PosixFileImpl.o src/file/PosixFileImpl.cpp
 
 ${OBJECTDIR}/src/file/md5.o: src/file/md5.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/file
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/md5.o src/file/md5.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/md5.o src/file/md5.cpp
+
+${OBJECTDIR}/src/sockets/SocketException.o: src/sockets/SocketException.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sockets
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/SocketException.o src/sockets/SocketException.cpp
 
 ${OBJECTDIR}/src/file/AbstractFile.o: src/file/AbstractFile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/file
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/AbstractFile.o src/file/AbstractFile.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/AbstractFile.o src/file/AbstractFile.cpp
 
 ${OBJECTDIR}/src/sockets/Socket.o: src/sockets/Socket.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sockets
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/Socket.o src/sockets/Socket.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/Socket.o src/sockets/Socket.cpp
 
 ${OBJECTDIR}/src/sockets/InputStream.o: src/sockets/InputStream.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sockets
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/InputStream.o src/sockets/InputStream.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/InputStream.o src/sockets/InputStream.cpp
 
 ${OBJECTDIR}/src/file/WinFileImpl.o: src/file/WinFileImpl.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/file
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/WinFileImpl.o src/file/WinFileImpl.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/WinFileImpl.o src/file/WinFileImpl.cpp
+
+${OBJECTDIR}/src/concurrency/Thread.o: src/concurrency/Thread.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/concurrency
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/concurrency/Thread.o src/concurrency/Thread.cpp
 
 ${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sockets
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/OutputStream.o src/sockets/OutputStream.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/OutputStream.o src/sockets/OutputStream.cpp
 
 # Subprojects
 .build-subprojects:
@@ -121,7 +127,7 @@ ${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/yaxl
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libyaxl
 
 # Subprojects
 .clean-subprojects:

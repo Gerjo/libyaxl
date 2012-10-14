@@ -4,12 +4,13 @@
 
 #include "yaxl.h"
 
-
+#include "concurrency/Thread.h"
 
 using namespace yaxl;
 using namespace file;
 using namespace socket;
 using namespace std;
+using namespace concurrency;
 
 void shortExample();
 void testSocket();
@@ -17,14 +18,10 @@ void scanFolder();
 void readFile();
 void writingFiles();
 void createFolders();
+void threading();
 
 int main(int argc, char** argv) {
-	//readFile();
-    scanFolder();
-
-    writingFiles();
-
-    createFolders();
+	threading();
 
     #ifdef WIN32
         return cin.get();
@@ -33,6 +30,11 @@ int main(int argc, char** argv) {
     #endif
 }
 
+void threading() {
+    Thread t;
+    t.start();
+    t.join();
+}
 
 void shortExample() {
 	try {
