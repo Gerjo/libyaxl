@@ -11,7 +11,7 @@ using namespace yaxl;
 using namespace file;
 using namespace socket;
 using namespace std;
-using namespace concurrency;
+using namespace yaxl::concurrency;
 
 void getWebsiteHttp();
 void testSocket();
@@ -22,8 +22,8 @@ void createFolders();
 void threading();
 
 int main(int argc, char** argv) {
-    getWebsiteHttp();
-    //threading();
+    //getWebsiteHttp();
+    threading();
     #ifdef WIN32
         return cin.get();
     #else
@@ -40,7 +40,7 @@ void threading() {
     // Using the runnable interface:
     SomeRunnable runme;
 
-    Thread t2(&runme);
+    Thread t2((Runnable*)&runme);
     t2.start();
     t2.join();
 }
