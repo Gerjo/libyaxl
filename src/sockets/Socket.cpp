@@ -33,7 +33,6 @@ void Socket::init(void) {
 		exit(6);
 	}
 
-
 	#ifdef WIN32
 		WSADATA wsaData;
 		if (::WSAStartup(MAKEWORD(1, 1), &wsaData) != 0) {
