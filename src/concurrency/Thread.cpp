@@ -32,13 +32,7 @@ namespace yaxl {
         }
 
         void Thread::operator()() {
-            cout << "operator()()" << endl;
             run();
         }
-
-        void Thread::run() {
-            cout << "ran" << endl;
-        }
-
     }
 }

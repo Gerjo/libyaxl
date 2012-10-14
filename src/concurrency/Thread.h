@@ -15,7 +15,7 @@ namespace yaxl {
         public:
             Thread();
             virtual ~Thread();
-            virtual void run();
+            virtual void run() = 0;
 
             void operator()();
             Thread(const Thread& orig);
