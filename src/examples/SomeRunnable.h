@@ -5,7 +5,7 @@
 #include <iostream>
 
 using namespace yaxl;
-using namespace concurrency;
+using namespace yaxl::concurrency;
 
 class SomeRunnable : public Runnable {
     virtual void run() {

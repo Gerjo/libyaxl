@@ -6,7 +6,7 @@
 #include "../yaxl.h"
 
 using namespace yaxl;
-using namespace concurrency;
+using namespace yaxl::concurrency;
 
 
 class SomeThread : public Thread {
