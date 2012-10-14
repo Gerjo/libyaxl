@@ -4,13 +4,15 @@
 
 #include "../yaxl.h"
 
+#include "SomeThread.h"
+
 using namespace yaxl;
 using namespace file;
 using namespace socket;
 using namespace std;
 using namespace concurrency;
 
-void shortExample();
+void getWebsiteHttp();
 void testSocket();
 void scanFolder();
 void readFile();
@@ -19,8 +21,7 @@ void createFolders();
 void threading();
 
 int main(int argc, char** argv) {
-	threading();
-
+    threading();
     #ifdef WIN32
         return cin.get();
     #else
@@ -29,12 +30,12 @@ int main(int argc, char** argv) {
 }
 
 void threading() {
-    Thread t;
+    SomeThread t;
     t.start();
     t.join();
 }
 
-void shortExample() {
+void getWebsiteHttp() {
 	try {
 		Socket sock("tweakers.net", "80");
 
@@ -45,18 +46,19 @@ void shortExample() {
 
 		// Permit the server 1 second to come up with a reply.
 		#ifdef WIN32
-			Sleep(1000);
+			Sleep(500);
 		#else
-			usleep(1000);
+			usleep(500);
 		#endif
 
 		int bytesAvailable = in.available();
 
 		string buff = in.read(bytesAvailable);
-
 		cout << buff << endl;
+        cout << "That where " << buff.size() << " bytes. (" << bytesAvailable << " bytes according to .available())" << endl;
+
 	} catch(const SocketException& ex) {
-		cout << "err" << ex.what() << endl;
+		cout << "Exception: " << ex.what() << endl;
 	}
 }
 
