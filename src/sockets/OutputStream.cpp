@@ -7,57 +7,56 @@
 
 #include "OutputStream.h"
 #include "Socket.h"
+#include "SocketException.h"
 
 namespace yaxl {
-namespace socket {
+    namespace socket {
 
-OutputStream::OutputStream(Socket& socket) : socket(socket) {
+        OutputStream::OutputStream(Socket& socket) : socket(socket) {
 
-}
+        }
 
-OutputStream::OutputStream(const OutputStream& orig) : socket(orig.socket) {
+        OutputStream::OutputStream(const OutputStream& orig) : socket(orig.socket) {
 
-}
+        }
 
-void OutputStream::write(const stringstream ssToSend) {
-	write(ssToSend.str());
-}
+        void OutputStream::write(const stringstream ssToSend) {
+            write(ssToSend.str());
+        }
 
-void OutputStream::write(const string stringToSend) {
-	write(stringToSend.c_str(), stringToSend.length());
-}
+        void OutputStream::write(const string stringToSend) {
+            write(stringToSend.c_str(), stringToSend.length());
+        }
 
-// Relies on strlen(), so very unsafe for anything but c style strings.
-void OutputStream::write(const char* bytes) {
-    write(bytes, strlen(bytes));
-}
+        // Relies on strlen(), so very unsafe for anything but c style strings.
+        void OutputStream::write(const char* bytes) {
+            write(bytes, strlen(bytes));
+        }
 
-void OutputStream::write(const char* bytes, const int sendLength) {
-    const int socketFd = socket.getSocketFd();
-    const char* start  = bytes;
-	int bytesSent = 0;
-	int total     = 0;
+        void OutputStream::write(const char* bytes, const int sendLength) {
+            const int socketFd = socket.getSocketFd();
+            const char* start  = bytes;
+            int bytesSent      = 0;
+            int total          = 0;
 
-	do {
-		bytesSent = ::send(socketFd, (start + total), sendLength, MSG_NOSIGNAL);
+            do {
+                bytesSent = ::send(socketFd, (start + total), sendLength, MSG_NOSIGNAL);
+                if (bytesSent == -1) {
+                    if (errno == EINTR || errno == EAGAIN) {
+                        continue;
+                    }
 
-		if (bytesSent == -1) {
-			if (errno == EINTR || errno == EAGAIN) {
-				continue;
-			}
+                    throw SocketException(strerror(errno));
+                    break;
+                }
 
-			perror("Cannot send to client because");
-			break;
-		}
+                if ((total += bytesSent) < sendLength) {
+                    continue;
+                }
 
-		if ((total += bytesSent) < sendLength) {
-			continue;
-		}
-
-		// We reached this point, so all data is sent.
-		break;
-	} while (true);
-}
-
-}
+                // We reached this point, so all data is sent.
+                break;
+            } while (true);
+        }
+    }
 }
