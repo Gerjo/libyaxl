@@ -14,16 +14,17 @@ namespace yaxl {
         class Thread : public Runnable {
         public:
             Thread();
+            Thread(Runnable* runnable);
             virtual ~Thread();
-            virtual void run() = 0;
-
+            virtual void run();
             void operator()();
-            Thread(const Thread& orig);
-
             void start();
             void join();
+
         private:
+            Thread(const Thread& orig);
             std::thread* _thread;
+            Runnable* _runnable;
         };
 
     }

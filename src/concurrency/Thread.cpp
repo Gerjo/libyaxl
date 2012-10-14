@@ -4,9 +4,13 @@ namespace yaxl {
     namespace concurrency {
 
         Thread::Thread() {
-            _thread = 0;
-            cout << " done !" << endl;
+            _thread   = 0;
+            _runnable = 0;
+        }
 
+        Thread::Thread(Runnable* runnable) {
+            _thread   = 0;
+            _runnable = runnable;
         }
 
         Thread::Thread(const Thread& orig) {
@@ -31,6 +35,13 @@ namespace yaxl {
             }
         }
 
+        void Thread::run() {
+            if(_runnable != 0) {
+                _runnable->run();
+            }
+        }
+
+        // Callback from (native) threads:
         void Thread::operator()() {
             run();
         }

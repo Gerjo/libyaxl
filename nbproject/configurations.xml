@@ -13,6 +13,7 @@
         <itemPath>src/concurrency/concurrency.h</itemPath>
       </logicalFolder>
       <logicalFolder name="examples" displayName="examples" projectFiles="true">
+        <itemPath>src/examples/SomeRunnable.h</itemPath>
         <itemPath>src/examples/SomeThread.h</itemPath>
         <itemPath>src/examples/main.cpp</itemPath>
       </logicalFolder>

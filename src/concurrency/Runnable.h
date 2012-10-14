@@ -4,6 +4,7 @@
 namespace yaxl {
     namespace concurrency {
         class Runnable {
+        public:
             virtual void run() = 0;
         };
     }

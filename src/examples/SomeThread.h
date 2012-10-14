@@ -14,9 +14,9 @@ public:
     SomeThread() {
 
     }
-    
+
     void run() {
-        for(int i = 1, max = 10; i <= max; ++i) {
+        for(int i = 1, max = 5; i <= max; ++i) {
             std::cout << "SomeThread count: " << i << "/" << max << endl;
         }
     }

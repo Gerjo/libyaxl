@@ -40,8 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/file/AbstractFile.o \
 	${OBJECTDIR}/src/sockets/Socket.o \
 	${OBJECTDIR}/src/sockets/InputStream.o \
-	${OBJECTDIR}/src/file/WinFileImpl.o \
 	${OBJECTDIR}/src/concurrency/Thread.o \
+	${OBJECTDIR}/src/file/WinFileImpl.o \
 	${OBJECTDIR}/src/examples/main.o \
 	${OBJECTDIR}/src/sockets/OutputStream.o
 
@@ -95,15 +95,15 @@ ${OBJECTDIR}/src/sockets/InputStream.o: src/sockets/InputStream.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/InputStream.o src/sockets/InputStream.cpp
 
-${OBJECTDIR}/src/file/WinFileImpl.o: src/file/WinFileImpl.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/file
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/WinFileImpl.o src/file/WinFileImpl.cpp
-
 ${OBJECTDIR}/src/concurrency/Thread.o: src/concurrency/Thread.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/concurrency
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/concurrency/Thread.o src/concurrency/Thread.cpp
+
+${OBJECTDIR}/src/file/WinFileImpl.o: src/file/WinFileImpl.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/file
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/WinFileImpl.o src/file/WinFileImpl.cpp
 
 ${OBJECTDIR}/src/examples/main.o: src/examples/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/examples

@@ -5,6 +5,7 @@
 #include "../yaxl.h"
 
 #include "SomeThread.h"
+#include "SomeRunnable.h"
 
 using namespace yaxl;
 using namespace file;
@@ -30,9 +31,17 @@ int main(int argc, char** argv) {
 }
 
 void threading() {
-    SomeThread t;
-    t.start();
-    t.join();
+    // Extending on thread:
+    SomeThread t1;
+    t1.start();
+    t1.join();
+
+    // Using the runnable interface:
+    SomeRunnable runme;
+
+    Thread t2(&runme);
+    t2.start();
+    t2.join();
 }
 
 void getWebsiteHttp() {
