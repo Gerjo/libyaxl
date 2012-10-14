@@ -43,7 +43,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/file/WinFileImpl.o \
 	${OBJECTDIR}/src/concurrency/Thread.o \
 	${OBJECTDIR}/src/examples/main.o \
-	${OBJECTDIR}/src/examples/SomeThread.o \
 	${OBJECTDIR}/src/sockets/OutputStream.o
 
 
@@ -110,11 +109,6 @@ ${OBJECTDIR}/src/examples/main.o: src/examples/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/examples
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/examples/main.o src/examples/main.cpp
-
-${OBJECTDIR}/src/examples/SomeThread.o: src/examples/SomeThread.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/examples
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/examples/SomeThread.o src/examples/SomeThread.cpp
 
 ${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sockets

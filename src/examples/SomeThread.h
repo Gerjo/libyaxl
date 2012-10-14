@@ -11,8 +11,16 @@ using namespace concurrency;
 
 class SomeThread : public Thread {
 public:
-    SomeThread();
-    virtual void run();
+    SomeThread() {
+
+    }
+    
+    void run() {
+        for(int i = 1, max = 10; i <= max; ++i) {
+            std::cout << "SomeThread count: " << i << "/" << max << endl;
+        }
+    }
+
 private:
 
 };
