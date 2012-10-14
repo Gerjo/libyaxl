@@ -4,8 +4,6 @@
 
 #include "yaxl.h"
 
-#include "concurrency/Thread.h"
-
 using namespace yaxl;
 using namespace file;
 using namespace socket;

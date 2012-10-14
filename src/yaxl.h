@@ -10,6 +10,7 @@
 
 #include "sockets/Sockets.h"
 #include "file/File.h"
+#include "concurrency/concurrency.h"
 
 #endif	/* YAXL_H */
 
