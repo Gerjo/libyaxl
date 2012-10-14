@@ -22,7 +22,8 @@ void createFolders();
 void threading();
 
 int main(int argc, char** argv) {
-    threading();
+    getWebsiteHttp();
+    //threading();
     #ifdef WIN32
         return cin.get();
     #else
@@ -46,25 +47,30 @@ void threading() {
 
 void getWebsiteHttp() {
 	try {
-		Socket sock("tweakers.net", "80");
+		Socket sock("gerardmeier.com", "80");
 
 		OutputStream& out = sock.getOutputStream();
 		InputStream& in   = sock.getInputStream();
 
-		out.write("GET / HTTP1.0\n\rhost: tweakers.net\n\r\n\r");
+		out.write("GET / HTTP1.0\n\rhost: gerardmeier.com\n\r\n\r");
 
-		// Permit the server 1 second to come up with a reply.
-		#ifdef WIN32
-			Sleep(500);
-		#else
-			usleep(500);
-		#endif
+        bool isRunning = true;
+        string all;
+        int meh = 0;
 
-		int bytesAvailable = in.available();
+        do {
+            int bytesAvailable = in.available();
+            string buff        = in.read(bytesAvailable);
+            cout << buff;
+            all += buff;
 
-		string buff = in.read(bytesAvailable);
-		cout << buff << endl;
-        cout << "That where " << buff.size() << " bytes. (" << bytesAvailable << " bytes according to .available())" << endl;
+            string end = "</html>";
+
+            if(all.length() >= end.length() && all.substr(all.length() - end.length(), all.length()).compare(end) == 0) {
+                break;
+            }
+
+        } while(isRunning);
 
 	} catch(const SocketException& ex) {
 		cout << "Exception: " << ex.what() << endl;
