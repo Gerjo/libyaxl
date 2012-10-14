@@ -8,26 +8,18 @@
 #ifndef SOCKETEXCEPTION_H
 #define	SOCKETEXCEPTION_H
 
-#include <exception>
-#include <string>
+#include "../common/YaxlException.h"
+
 
 namespace yaxl {
-namespace socket {
+    namespace socket {
+        class SocketException : public YaxlException {
+        public:
+            SocketException(string error) : YaxlException(error) {
 
-using namespace std;
-
-class SocketException {
-public:
-    SocketException(string error);
-    SocketException(const SocketException& orig);
-    virtual ~SocketException();
-
-	virtual string what() const;
-private:
-    string error;
-};
-
-}
+            }
+        };
+    }
 }
 
 #endif	/* SOCKETEXCEPTION_H */

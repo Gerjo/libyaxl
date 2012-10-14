@@ -2,19 +2,26 @@
 <configurationDescriptor version="84">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="src" displayName="src" projectFiles="true">
+      <logicalFolder name="common" displayName="common" projectFiles="true">
+        <itemPath>src/common/YaxlException.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="concurrency" displayName="concurrency" projectFiles="true">
+        <itemPath>src/concurrency/ConcurrencyException.h</itemPath>
         <itemPath>src/concurrency/Runnable.h</itemPath>
         <itemPath>src/concurrency/Thread.cpp</itemPath>
         <itemPath>src/concurrency/Thread.h</itemPath>
         <itemPath>src/concurrency/concurrency.h</itemPath>
       </logicalFolder>
       <logicalFolder name="examples" displayName="examples" projectFiles="true">
+        <itemPath>src/examples/SomeThread.cpp</itemPath>
+        <itemPath>src/examples/SomeThread.h</itemPath>
         <itemPath>src/examples/main.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="file" displayName="file" projectFiles="true">
         <itemPath>src/file/AbstractFile.cpp</itemPath>
         <itemPath>src/file/AbstractFile.h</itemPath>
         <itemPath>src/file/File.h</itemPath>
+        <itemPath>src/file/FileException.h</itemPath>
         <itemPath>src/file/PosixFileImpl.cpp</itemPath>
         <itemPath>src/file/PosixFileImpl.h</itemPath>
         <itemPath>src/file/WinFileImpl.cpp</itemPath>
@@ -29,7 +36,6 @@
         <itemPath>src/sockets/OutputStream.h</itemPath>
         <itemPath>src/sockets/Socket.cpp</itemPath>
         <itemPath>src/sockets/Socket.h</itemPath>
-        <itemPath>src/sockets/SocketException.cpp</itemPath>
         <itemPath>src/sockets/SocketException.h</itemPath>
         <itemPath>src/sockets/Sockets.h</itemPath>
       </logicalFolder>

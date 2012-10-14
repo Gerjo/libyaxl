@@ -37,13 +37,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/file/PosixFileImpl.o \
 	${OBJECTDIR}/src/file/md5.o \
-	${OBJECTDIR}/src/sockets/SocketException.o \
 	${OBJECTDIR}/src/file/AbstractFile.o \
 	${OBJECTDIR}/src/sockets/Socket.o \
 	${OBJECTDIR}/src/sockets/InputStream.o \
 	${OBJECTDIR}/src/file/WinFileImpl.o \
 	${OBJECTDIR}/src/concurrency/Thread.o \
 	${OBJECTDIR}/src/examples/main.o \
+	${OBJECTDIR}/src/examples/SomeThread.o \
 	${OBJECTDIR}/src/sockets/OutputStream.o
 
 
@@ -81,11 +81,6 @@ ${OBJECTDIR}/src/file/md5.o: src/file/md5.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/md5.o src/file/md5.cpp
 
-${OBJECTDIR}/src/sockets/SocketException.o: src/sockets/SocketException.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
-	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/SocketException.o src/sockets/SocketException.cpp
-
 ${OBJECTDIR}/src/file/AbstractFile.o: src/file/AbstractFile.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/file
 	${RM} $@.d
@@ -115,6 +110,11 @@ ${OBJECTDIR}/src/examples/main.o: src/examples/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/examples
 	${RM} $@.d
 	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/examples/main.o src/examples/main.cpp
+
+${OBJECTDIR}/src/examples/SomeThread.o: src/examples/SomeThread.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/examples
+	${RM} $@.d
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/examples/SomeThread.o src/examples/SomeThread.cpp
 
 ${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sockets
