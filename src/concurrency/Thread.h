@@ -6,6 +6,7 @@
 #include <thread>
 
 #include "Runnable.h"
+#include "ConcurrencyException.h"
 
 using namespace std;
 

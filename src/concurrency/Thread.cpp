@@ -26,6 +26,8 @@ namespace yaxl {
         void Thread::start() {
             if(_thread == 0) {
                 _thread = new std::thread(std::ref(*this));
+            } else {
+                throw ConcurrencyException("Thread is already started.");
             }
         }
 
