@@ -34,6 +34,8 @@
         <itemPath>src/sockets/InputStream.h</itemPath>
         <itemPath>src/sockets/OutputStream.cpp</itemPath>
         <itemPath>src/sockets/OutputStream.h</itemPath>
+        <itemPath>src/sockets/ServerSocket.cpp</itemPath>
+        <itemPath>src/sockets/ServerSocket.h</itemPath>
         <itemPath>src/sockets/Socket.cpp</itemPath>
         <itemPath>src/sockets/Socket.h</itemPath>
         <itemPath>src/sockets/SocketException.h</itemPath>

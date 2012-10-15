@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/file/md5.o \
 	${OBJECTDIR}/src/file/AbstractFile.o \
 	${OBJECTDIR}/src/sockets/Socket.o \
+	${OBJECTDIR}/src/sockets/ServerSocket.o \
 	${OBJECTDIR}/src/sockets/InputStream.o \
 	${OBJECTDIR}/src/concurrency/Thread.o \
 	${OBJECTDIR}/src/file/WinFileImpl.o \
@@ -89,6 +90,11 @@ ${OBJECTDIR}/src/sockets/Socket.o: src/sockets/Socket.cpp
 	${MKDIR} -p ${OBJECTDIR}/src/sockets
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/Socket.o src/sockets/Socket.cpp
+
+${OBJECTDIR}/src/sockets/ServerSocket.o: src/sockets/ServerSocket.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src/sockets
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/ServerSocket.o src/sockets/ServerSocket.cpp
 
 ${OBJECTDIR}/src/sockets/InputStream.o: src/sockets/InputStream.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src/sockets
