@@ -17,7 +17,7 @@ Socket::Socket(string address, string port) : _isConnected(false) {
 }
 
 Socket::Socket(const Socket& orig) : _isConnected(false) {
-
+    throw SocketException("Sockets cannot be copied.");
 }
 
 Socket::~Socket() {

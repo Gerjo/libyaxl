@@ -50,6 +50,7 @@ public:
 
 	const bool isConnected(void);
 
+    friend class ServerSocket;
 private:
 	Socket(const Socket& orig);
     string address;
