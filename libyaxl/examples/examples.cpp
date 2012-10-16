@@ -22,7 +22,7 @@ void createFolders();
 void threading();
 void server();
 
-int main(int argc, char** argv) {
+int mehmain(int argc, char** argv) {
     server();
     //getWebsiteHttp();
     //threading();

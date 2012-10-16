@@ -15,7 +15,7 @@
       <logicalFolder name="examples" displayName="examples" projectFiles="true">
         <itemPath>libyaxl/examples/SomeRunnable.h</itemPath>
         <itemPath>libyaxl/examples/SomeThread.h</itemPath>
-        <itemPath>libyaxl/examples/main.cpp</itemPath>
+        <itemPath>libyaxl/examples/examples.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="file" displayName="file" projectFiles="true">
         <itemPath>libyaxl/file/AbstractFile.cpp</itemPath>
