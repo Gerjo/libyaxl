@@ -105,6 +105,7 @@
     <ClInclude Include="..\libyaxl\libyaxl\sockets\Sockets.h">
       <Filter>sockets</Filter>
     </ClInclude>
+    <ClInclude Include="..\libyaxl\libyaxl\CompileConfig.h" />
     <ClInclude Include="..\libyaxl\libyaxl\yaxl.h" />
   </ItemGroup>
 </Project>

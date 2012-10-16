@@ -3,11 +3,12 @@
 
 #include "SocketException.h"
 #include "Socket.h"
+#include "../CompileConfig.h"
 
 namespace yaxl {
     namespace socket {
 
-        class ServerSocket {
+        class LIBEXPORT ServerSocket {
         public:
             ServerSocket(int port);
             virtual ~ServerSocket();

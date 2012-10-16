@@ -7,12 +7,13 @@
 
 #include "Runnable.h"
 #include "ConcurrencyException.h"
+#include "../CompileConfig.h"
 
 using namespace std;
 
 namespace yaxl {
     namespace concurrency {
-        class Thread : public Runnable {
+        class LIBEXPORT Thread : public Runnable {
         public:
             Thread();
             Thread(Runnable* runnable);

@@ -91,6 +91,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+   <ClInclude Include="..\libyaxl\libyaxl\CompileConfig.h" />
    <ClInclude Include="..\libyaxl\libyaxl\yaxl.h" />
   </ItemGroup>
   <ItemGroup>

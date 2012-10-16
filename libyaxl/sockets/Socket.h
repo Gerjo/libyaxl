@@ -24,6 +24,8 @@
 	#include <arpa/inet.h>
 #endif
 
+#include "../CompileConfig.h"
+
 #ifndef MSG_NOSIGNAL
 	#define MSG_NOSIGNAL 0
 #endif
@@ -36,7 +38,7 @@ class InputStream;
 
 using namespace std;
 
-class Socket {
+class LIBEXPORT Socket {
 public:
     Socket(string address, string port);
     virtual ~Socket();
