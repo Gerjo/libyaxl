@@ -37,9 +37,9 @@ void server() {
     cout << "Starting server" << endl;
     ServerSocket server(5555);
     Socket* client = server.accept();
+    client->getOutputStream().write("You just connected, how nice.\n");
 
-    client->getOutputStream().write("You just connected, how nice.");
-    
+    delete client;
 
     cout << "completed." << endl;
 }
