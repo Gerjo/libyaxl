@@ -53,12 +53,13 @@ public:
     friend class ServerSocket;
 private:
 	Socket(const Socket& orig);
+    Socket(int socketFd);
     string address;
     string port;
     int socketFd;
     bool _isConnected;
 
-    void init(void);
+    void connect(void);
     OutputStream* outputStream;
     InputStream* inputStream;
 

@@ -6,6 +6,8 @@
 namespace yaxl {
 namespace socket {
 
+
+
 Socket::Socket(string address, string port) : _isConnected(false) {
     this->address = address;
     this->port    = port;
@@ -13,7 +15,12 @@ Socket::Socket(string address, string port) : _isConnected(false) {
     outputStream  = new OutputStream(*this);
     inputStream   = new InputStream(*this);
 
-    init();
+    connect();
+}
+
+// Private, available via friendclass.
+Socket::Socket(int socketFd) {
+    cout << "Buddeh!" << endl;
 }
 
 Socket::Socket(const Socket& orig) : _isConnected(false) {
@@ -26,11 +33,10 @@ Socket::~Socket() {
 	}
 }
 
-void Socket::init(void) {
+void Socket::connect(void) {
 
 	if(isConnected()) {
-		cout << "already connected!";
-		exit(6);
+        throw SocketException("Socket is already connected.");
 	}
 
     Socket::setupWGA();
@@ -41,20 +47,22 @@ void Socket::init(void) {
     hints.ai_socktype = SOCK_STREAM;
 
     if (::getaddrinfo(address.c_str(), port.c_str(), &hints, &servinfo) != 0) {
-		perror("cannot get addr info.");
-        return;
+        throw SocketException("Unable to acquire addrinfo.");
     }
 
-    // loop through all the results and connect to the first we can
+    // Iterate through all the results and connect to the first one that lets
+    // us actually connect. Nb: This accounts for DNS a-records with multiple
+    // records associated with them.
     for(addrinfo* p = servinfo; p != 0; p = p->ai_next) {
         if ((socketFd = ::socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1) {
-            perror("client: socket");
-            continue;
+            throw SocketException(strerror(errno));
         }
 
+
         if (::connect(socketFd, p->ai_addr, p->ai_addrlen) == -1) {
+            // So we're unable to connect. Not detrimental, since there may
+            // be more addresses to try.
             this->close(socketFd);
-            perror("client: connect");
             continue;
         }
 
@@ -62,7 +70,7 @@ void Socket::init(void) {
 
 		char s[32]; // wrong length!
 		::inet_ntop(p->ai_family, &(((sockaddr_in*)(sockaddr *)p->ai_addr)->sin_addr), s, sizeof(s));
-		printf("client: connecting to %s\n", s);
+		printf("client: connected to %s\n", s);
 
 		_isConnected = true;
         break;
@@ -71,8 +79,7 @@ void Socket::init(void) {
 	::freeaddrinfo(servinfo);
 
     if (!isConnected()) {
-        perror("client: failed to connect\n");
-        return;
+        throw SocketException("Unable to connect.");
     }
 }
 

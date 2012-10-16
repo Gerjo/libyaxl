@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   Sockets.h
  * Author: gerjo
  *
@@ -12,6 +12,7 @@
 #include "SocketException.h"
 #include "InputStream.h"
 #include "OutputStream.h"
+#include "ServerSocket.h"
 
 #endif	/* SOCKETS_H_ASDSDFJKVMER */
 

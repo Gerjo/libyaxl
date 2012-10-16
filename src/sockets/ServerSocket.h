@@ -9,16 +9,18 @@ namespace yaxl {
 
         class ServerSocket {
         public:
-            ServerSocket();
+            ServerSocket(int port);
             virtual ~ServerSocket();
 
             // TODO:
             Socket* accept(void);
             //void listen();
 
-
         private:
             ServerSocket(const ServerSocket& orig);
+            int _socketFd;
+            int _port;
+            void setup();
         };
 
 

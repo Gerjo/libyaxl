@@ -20,15 +20,24 @@ void readFile();
 void writingFiles();
 void createFolders();
 void threading();
+void server();
 
 int main(int argc, char** argv) {
+    server();
     //getWebsiteHttp();
-    threading();
+    //threading();
     #ifdef WIN32
         return cin.get();
     #else
         return 0;
     #endif
+}
+
+void server() {
+    cout << "Starting server" << endl;
+    ServerSocket server(5555);
+    server.accept();
+    cout << "completed." << endl;
 }
 
 void threading() {
