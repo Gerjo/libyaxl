@@ -16,7 +16,6 @@ namespace yaxl {
 
         }
 
-
         void ServerSocket::setup() {
             if(_socketFd != 0) {
                 throw SocketException("ServerSocket is already listening.");
@@ -60,9 +59,13 @@ namespace yaxl {
 
             int newsockfd   = ::accept(_socketFd, (sockaddr *) &cli_addr, &clilen);
 
-            //Socket* sock = new Socket(newsockfd);
+            if(newsockfd <= 0) {
+                throw SocketException(strerror(errno));
+            }
 
-            return 0;
+            Socket* sock = new Socket(newsockfd);
+
+            return sock;
         }
     }
 }
