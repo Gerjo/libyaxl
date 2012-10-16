@@ -36,7 +36,11 @@ int main(int argc, char** argv) {
 void server() {
     cout << "Starting server" << endl;
     ServerSocket server(5555);
-    server.accept();
+    Socket* client = server.accept();
+
+    client->getOutputStream().write("You just connected, how nice.");
+    
+
     cout << "completed." << endl;
 }
 
