@@ -6,21 +6,18 @@
 namespace yaxl {
 namespace socket {
 
-
-
 Socket::Socket(string address, string port) : _isConnected(false) {
     this->address = address;
     this->port    = port;
 
-    outputStream  = new OutputStream(*this);
-    inputStream   = new InputStream(*this);
-
+    createStreams();
     connect();
 }
 
 // Private, available via friendclass.
 Socket::Socket(int socketFd) {
-    cout << "Buddeh!" << endl;
+    this->socketFd = socketFd;
+    createStreams();
 }
 
 Socket::Socket(const Socket& orig) : _isConnected(false) {
@@ -31,6 +28,14 @@ Socket::~Socket() {
     if(isConnected()) {
 		this->close();
 	}
+
+    delete outputStream;
+    delete inputStream;
+}
+
+void Socket::createStreams(void) {
+    outputStream  = new OutputStream(*this);
+    inputStream   = new InputStream(*this);
 }
 
 void Socket::connect(void) {

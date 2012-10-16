@@ -63,6 +63,7 @@ private:
     OutputStream* outputStream;
     InputStream* inputStream;
 
+    void createStreams(void);
     const int getSocketFd() const;
     void close(const int whom);
 
