@@ -56,25 +56,29 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>file</Elem>
     <Elem>src</Elem>
-    <Elem>libyaxl</Elem>
+    <Elem>../libyaxl/libyaxl</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="1">
+    <conf name="Debug" type="2">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
       </toolsSet>
       <compileType>
         <ccTool>
-          <commandLine>-std=c++0x -lpthread</commandLine>
-          <warningLevel>3</warningLevel>
+          <standard>8</standard>
+          <incDir>
+            <pElem>src</pElem>
+          </incDir>
         </ccTool>
+        <linkerTool>
+          <output>../dist/libyaxl.${CND_DLIB_EXT}</output>
+        </linkerTool>
       </compileType>
     </conf>
-    <conf name="Release" type="1">
+    <conf name="Release" type="2">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
@@ -85,6 +89,10 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <standard>8</standard>
+          <incDir>
+            <pElem>src</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -92,6 +100,9 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <output>../dist/libyaxl.${CND_DLIB_EXT}</output>
+        </linkerTool>
       </compileType>
     </conf>
   </confs>
