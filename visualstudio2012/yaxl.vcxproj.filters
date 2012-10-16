@@ -49,6 +49,9 @@
     <ClCompile Include="..\src\concurrency\Thread.cpp">
       <Filter>Source Files\concurrency</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\sockets\ServerSocket.cpp">
+      <Filter>Source Files\sockets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\file\AbstractFile.h">
@@ -107,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="..\src\concurrency\Thread.h">
       <Filter>Source Files\concurrency</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\sockets\ServerSocket.h">
+      <Filter>Source Files\sockets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

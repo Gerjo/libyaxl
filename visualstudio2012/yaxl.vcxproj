@@ -19,6 +19,7 @@
     <ClCompile Include="..\src\file\WinFileImpl.cpp" />
     <ClCompile Include="..\src\sockets\InputStream.cpp" />
     <ClCompile Include="..\src\sockets\OutputStream.cpp" />
+    <ClCompile Include="..\src\sockets\ServerSocket.cpp" />
     <ClCompile Include="..\src\sockets\Socket.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +38,7 @@
     <ClInclude Include="..\src\file\WinFileImpl.h" />
     <ClInclude Include="..\src\sockets\InputStream.h" />
     <ClInclude Include="..\src\sockets\OutputStream.h" />
+    <ClInclude Include="..\src\sockets\ServerSocket.h" />
     <ClInclude Include="..\src\sockets\Socket.h" />
     <ClInclude Include="..\src\sockets\SocketException.h" />
     <ClInclude Include="..\src\sockets\Sockets.h" />
