@@ -11,38 +11,38 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\concurrency\Thread.cpp" />
-    <ClCompile Include="..\src\examples\main.cpp" />
-    <ClCompile Include="..\src\file\AbstractFile.cpp" />
-    <ClCompile Include="..\src\file\md5.cpp" />
-    <ClCompile Include="..\src\file\PosixFileImpl.cpp" />
-    <ClCompile Include="..\src\file\WinFileImpl.cpp" />
-    <ClCompile Include="..\src\sockets\InputStream.cpp" />
-    <ClCompile Include="..\src\sockets\OutputStream.cpp" />
-    <ClCompile Include="..\src\sockets\ServerSocket.cpp" />
-    <ClCompile Include="..\src\sockets\Socket.cpp" />
+    <ClInclude Include="..\libyaxl\common\YaxlException.h" />
+    <ClInclude Include="..\libyaxl\concurrency\concurrency.h" />
+    <ClInclude Include="..\libyaxl\concurrency\ConcurrencyException.h" />
+    <ClInclude Include="..\libyaxl\concurrency\Runnable.h" />
+    <ClInclude Include="..\libyaxl\concurrency\Thread.h" />
+    <ClInclude Include="..\libyaxl\examples\SomeRunnable.h" />
+    <ClInclude Include="..\libyaxl\examples\SomeThread.h" />
+    <ClInclude Include="..\libyaxl\file\AbstractFile.h" />
+    <ClInclude Include="..\libyaxl\file\File.h" />
+    <ClInclude Include="..\libyaxl\file\FileException.h" />
+    <ClInclude Include="..\libyaxl\file\md5.h" />
+    <ClInclude Include="..\libyaxl\file\PosixFileImpl.h" />
+    <ClInclude Include="..\libyaxl\file\WinFileImpl.h" />
+    <ClInclude Include="..\libyaxl\sockets\InputStream.h" />
+    <ClInclude Include="..\libyaxl\sockets\OutputStream.h" />
+    <ClInclude Include="..\libyaxl\sockets\ServerSocket.h" />
+    <ClInclude Include="..\libyaxl\sockets\Socket.h" />
+    <ClInclude Include="..\libyaxl\sockets\SocketException.h" />
+    <ClInclude Include="..\libyaxl\sockets\Sockets.h" />
+    <ClInclude Include="..\libyaxl\yaxl.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\common\YaxlException.h" />
-    <ClInclude Include="..\src\concurrency\concurrency.h" />
-    <ClInclude Include="..\src\concurrency\ConcurrencyException.h" />
-    <ClInclude Include="..\src\concurrency\Runnable.h" />
-    <ClInclude Include="..\src\concurrency\Thread.h" />
-    <ClInclude Include="..\src\examples\SomeRunnable.h" />
-    <ClInclude Include="..\src\examples\SomeThread.h" />
-    <ClInclude Include="..\src\file\AbstractFile.h" />
-    <ClInclude Include="..\src\file\File.h" />
-    <ClInclude Include="..\src\file\FileException.h" />
-    <ClInclude Include="..\src\file\md5.h" />
-    <ClInclude Include="..\src\file\PosixFileImpl.h" />
-    <ClInclude Include="..\src\file\WinFileImpl.h" />
-    <ClInclude Include="..\src\sockets\InputStream.h" />
-    <ClInclude Include="..\src\sockets\OutputStream.h" />
-    <ClInclude Include="..\src\sockets\ServerSocket.h" />
-    <ClInclude Include="..\src\sockets\Socket.h" />
-    <ClInclude Include="..\src\sockets\SocketException.h" />
-    <ClInclude Include="..\src\sockets\Sockets.h" />
-    <ClInclude Include="..\src\yaxl.h" />
+    <ClCompile Include="..\libyaxl\concurrency\Thread.cpp" />
+    <ClCompile Include="..\libyaxl\examples\main.cpp" />
+    <ClCompile Include="..\libyaxl\file\AbstractFile.cpp" />
+    <ClCompile Include="..\libyaxl\file\md5.cpp" />
+    <ClCompile Include="..\libyaxl\file\PosixFileImpl.cpp" />
+    <ClCompile Include="..\libyaxl\file\WinFileImpl.cpp" />
+    <ClCompile Include="..\libyaxl\sockets\InputStream.cpp" />
+    <ClCompile Include="..\libyaxl\sockets\OutputStream.cpp" />
+    <ClCompile Include="..\libyaxl\sockets\ServerSocket.cpp" />
+    <ClCompile Include="..\libyaxl\sockets\Socket.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{91FD27BB-0B85-4614-94F2-DDCFD0DF29ED}</ProjectGuid>
