@@ -35,16 +35,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/file/PosixFileImpl.o \
-	${OBJECTDIR}/src/file/md5.o \
-	${OBJECTDIR}/src/file/AbstractFile.o \
-	${OBJECTDIR}/src/sockets/Socket.o \
-	${OBJECTDIR}/src/sockets/ServerSocket.o \
-	${OBJECTDIR}/src/sockets/InputStream.o \
-	${OBJECTDIR}/src/concurrency/Thread.o \
-	${OBJECTDIR}/src/file/WinFileImpl.o \
-	${OBJECTDIR}/src/examples/main.o \
-	${OBJECTDIR}/src/sockets/OutputStream.o
+	${OBJECTDIR}/libyaxl/sockets/InputStream.o \
+	${OBJECTDIR}/libyaxl/sockets/OutputStream.o \
+	${OBJECTDIR}/libyaxl/sockets/Socket.o \
+	${OBJECTDIR}/libyaxl/concurrency/Thread.o \
+	${OBJECTDIR}/libyaxl/file/WinFileImpl.o \
+	${OBJECTDIR}/libyaxl/file/AbstractFile.o \
+	${OBJECTDIR}/libyaxl/sockets/ServerSocket.o \
+	${OBJECTDIR}/libyaxl/examples/main.o \
+	${OBJECTDIR}/libyaxl/file/PosixFileImpl.o \
+	${OBJECTDIR}/libyaxl/file/md5.o
 
 
 # C Compiler Flags
@@ -71,55 +71,55 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libyaxl: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libyaxl ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/src/file/PosixFileImpl.o: src/file/PosixFileImpl.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/file
+${OBJECTDIR}/libyaxl/sockets/InputStream.o: libyaxl/sockets/InputStream.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/sockets
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/PosixFileImpl.o src/file/PosixFileImpl.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/sockets/InputStream.o libyaxl/sockets/InputStream.cpp
 
-${OBJECTDIR}/src/file/md5.o: src/file/md5.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/file
+${OBJECTDIR}/libyaxl/sockets/OutputStream.o: libyaxl/sockets/OutputStream.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/sockets
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/md5.o src/file/md5.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/sockets/OutputStream.o libyaxl/sockets/OutputStream.cpp
 
-${OBJECTDIR}/src/file/AbstractFile.o: src/file/AbstractFile.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/file
+${OBJECTDIR}/libyaxl/sockets/Socket.o: libyaxl/sockets/Socket.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/sockets
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/AbstractFile.o src/file/AbstractFile.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/sockets/Socket.o libyaxl/sockets/Socket.cpp
 
-${OBJECTDIR}/src/sockets/Socket.o: src/sockets/Socket.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
+${OBJECTDIR}/libyaxl/concurrency/Thread.o: libyaxl/concurrency/Thread.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/Socket.o src/sockets/Socket.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/concurrency/Thread.o libyaxl/concurrency/Thread.cpp
 
-${OBJECTDIR}/src/sockets/ServerSocket.o: src/sockets/ServerSocket.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
+${OBJECTDIR}/libyaxl/file/WinFileImpl.o: libyaxl/file/WinFileImpl.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/file
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/ServerSocket.o src/sockets/ServerSocket.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/file/WinFileImpl.o libyaxl/file/WinFileImpl.cpp
 
-${OBJECTDIR}/src/sockets/InputStream.o: src/sockets/InputStream.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
+${OBJECTDIR}/libyaxl/file/AbstractFile.o: libyaxl/file/AbstractFile.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/file
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/InputStream.o src/sockets/InputStream.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/file/AbstractFile.o libyaxl/file/AbstractFile.cpp
 
-${OBJECTDIR}/src/concurrency/Thread.o: src/concurrency/Thread.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/concurrency
+${OBJECTDIR}/libyaxl/sockets/ServerSocket.o: libyaxl/sockets/ServerSocket.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/sockets
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/concurrency/Thread.o src/concurrency/Thread.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/sockets/ServerSocket.o libyaxl/sockets/ServerSocket.cpp
 
-${OBJECTDIR}/src/file/WinFileImpl.o: src/file/WinFileImpl.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/file
+${OBJECTDIR}/libyaxl/examples/main.o: libyaxl/examples/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/examples
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/file/WinFileImpl.o src/file/WinFileImpl.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/examples/main.o libyaxl/examples/main.cpp
 
-${OBJECTDIR}/src/examples/main.o: src/examples/main.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/examples
+${OBJECTDIR}/libyaxl/file/PosixFileImpl.o: libyaxl/file/PosixFileImpl.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/file
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/examples/main.o src/examples/main.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/file/PosixFileImpl.o libyaxl/file/PosixFileImpl.cpp
 
-${OBJECTDIR}/src/sockets/OutputStream.o: src/sockets/OutputStream.cpp 
-	${MKDIR} -p ${OBJECTDIR}/src/sockets
+${OBJECTDIR}/libyaxl/file/md5.o: libyaxl/file/md5.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/file
 	${RM} $@.d
-	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/sockets/OutputStream.o src/sockets/OutputStream.cpp
+	$(COMPILE.cc) -g -Werror -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/file/md5.o libyaxl/file/md5.cpp
 
 # Subprojects
 .build-subprojects:

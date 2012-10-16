@@ -12,6 +12,7 @@
             <sourceRootList>
                 <sourceRootElem>file</sourceRootElem>
                 <sourceRootElem>src</sourceRootElem>
+                <sourceRootElem>libyaxl</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
