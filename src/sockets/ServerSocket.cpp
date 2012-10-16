@@ -31,8 +31,8 @@ namespace yaxl {
             }
 
 
-            int yes = 1;
-            int no  = 1;
+            char yes = 1;
+            char no  = 1;
 
             if((::setsockopt(_socketFd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1 ) || // prevents the "port in use" err.
                 (::setsockopt(_socketFd, SOL_SOCKET, SO_KEEPALIVE, &no, sizeof(int)) == -1 )){
