@@ -87,6 +87,6 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
+      <Command>xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
