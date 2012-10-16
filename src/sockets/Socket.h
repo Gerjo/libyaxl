@@ -64,6 +64,8 @@ private:
 
     const int getSocketFd() const;
     void close(const int whom);
+
+    static void setupWGA(void);
 };
 
 }

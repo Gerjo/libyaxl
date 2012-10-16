@@ -33,13 +33,7 @@ void Socket::init(void) {
 		exit(6);
 	}
 
-	#ifdef WIN32
-		WSADATA wsaData;
-		if (::WSAStartup(MAKEWORD(1, 1), &wsaData) != 0) {
-			fprintf(stderr, "WSAStartup failed.\n");
-			exit(1);
-		}
-	#endif
+    Socket::setupWGA();
 
 	addrinfo hints, *servinfo;
     ::memset(&hints, 0, sizeof(hints));
@@ -110,6 +104,18 @@ void Socket::close(const int whom) {
 
 const bool Socket::isConnected(void) {
 	return _isConnected;
+}
+
+
+void Socket::setupWGA(void) {
+	#ifdef WIN32
+        // TODO: can/should this be a singleton?
+		WSADATA wsaData;
+		if (::WSAStartup(MAKEWORD(1, 1), &wsaData) != 0) {
+			fprintf(stderr, "WSAStartup failed.\n");
+			exit(1);
+		}
+	#endif
 }
 
 }
