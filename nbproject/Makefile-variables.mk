@@ -8,20 +8,20 @@ CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
-CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=libyaxl
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/libyaxl
+CND_ARTIFACT_DIR_Debug=../dist
+CND_ARTIFACT_NAME_Debug=libyaxl.so
+CND_ARTIFACT_PATH_Debug=../dist/libyaxl.so
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=libyaxl.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/libyaxl.tar
+CND_PACKAGE_NAME_Debug=liblibyaxl.so.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/liblibyaxl.so.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=libyaxl
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/libyaxl
+CND_ARTIFACT_DIR_Release=../dist
+CND_ARTIFACT_NAME_Release=libyaxl.so
+CND_ARTIFACT_PATH_Release=../dist/libyaxl.so
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=libyaxl.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/libyaxl.tar
+CND_PACKAGE_NAME_Release=liblibyaxl.so.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/liblibyaxl.so.tar
 #
 # include compiler specific variables
 #

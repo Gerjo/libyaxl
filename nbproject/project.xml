@@ -10,18 +10,17 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>file</sourceRootElem>
                 <sourceRootElem>src</sourceRootElem>
-                <sourceRootElem>libyaxl</sourceRootElem>
+                <sourceRootElem>../libyaxl/libyaxl</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
                     <name>Debug</name>
-                    <type>1</type>
+                    <type>2</type>
                 </confElem>
                 <confElem>
                     <name>Release</name>
-                    <type>1</type>
+                    <type>2</type>
                 </confElem>
             </confList>
         </data>
