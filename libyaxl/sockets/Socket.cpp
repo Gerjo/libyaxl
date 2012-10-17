@@ -17,6 +17,7 @@ Socket::Socket(string address, string port) : _isConnected(false) {
 // Private, available via friendclass.
 Socket::Socket(int socketFd) {
     this->socketFd = socketFd;
+    _isConnected   = true;
     createStreams();
 }
 
