@@ -11,7 +11,7 @@
 #include <iostream>
 
 #include "md5.h"
-
+#include "../CompileConfig.h"
 
 namespace yaxl {
 namespace file {
@@ -27,7 +27,7 @@ using namespace std;
 #endif
 
 
-class AbstractFile {
+class LIBEXPORT AbstractFile {
 protected:
 	AbstractFile(string path);
 

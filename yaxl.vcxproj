@@ -87,10 +87,11 @@
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(TargetPath) $(SolutionDir)..\dist /Y</Command>
+      <Command>xcopy $(TargetPath) $(SolutionDir)dist /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+   <ClInclude Include="..\libyaxl\libyaxl\CompileConfig.h" />
    <ClInclude Include="..\libyaxl\libyaxl\yaxl.h" />
   </ItemGroup>
   <ItemGroup>

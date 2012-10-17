@@ -19,13 +19,14 @@
 #endif
 
 #include "Socket.h"
+#include "../CompileConfig.h"
 
 namespace yaxl {
 namespace socket {
 
 using namespace std;
 
-class OutputStream {
+class LIBEXPORT OutputStream {
 public:
     OutputStream(Socket& socket);
 	void write(const stringstream ssToSend);
