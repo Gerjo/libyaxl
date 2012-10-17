@@ -3,7 +3,7 @@
 
 #include "SocketException.h"
 #include "Socket.h"
-#include "../CompileConfig.h"
+#include "../common/CompileConfig.h"
 
 namespace yaxl {
     namespace socket {

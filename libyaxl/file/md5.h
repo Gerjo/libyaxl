@@ -45,6 +45,7 @@ documentation and/or software.
 
 // Added missing include. -- Gerjo
 #include <cstring>
+#include "../common/CompileConfig.h"
 
 namespace yaxl {
 namespace file {
@@ -59,7 +60,7 @@ namespace file {
 //      MD5(std::string).hexdigest()
 //
 // assumes that char is 8 bit and int is 32 bit
-class MD5
+class LIBEXPORT MD5
 {
 public:
   typedef unsigned int size_type; // must be 32bit

@@ -12,6 +12,7 @@
 #include <sys/stat.h>
 
 #include "AbstractFile.h"
+#include "../common/CompileConfig.h"
 
 namespace yaxl {
 namespace file {
@@ -21,7 +22,7 @@ typedef PosixFileImpl File;
 
 using namespace std;
 
-class PosixFileImpl : public AbstractFile {
+class LIBEXPORT PosixFileImpl : public AbstractFile {
 public:
     PosixFileImpl(string path);
     virtual ~PosixFileImpl();

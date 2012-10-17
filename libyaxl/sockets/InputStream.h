@@ -27,13 +27,14 @@
 
 #include "Socket.h"
 #include "SocketException.h"
+#include "../common/CompileConfig.h"
 
 namespace yaxl {
     namespace socket {
 
         using namespace std;
 
-        class InputStream {
+        class LIBEXPORT InputStream {
         public:
             InputStream(Socket& socket);
             char read(void);

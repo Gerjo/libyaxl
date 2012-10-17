@@ -7,7 +7,7 @@
 
 #include "Runnable.h"
 #include "ConcurrencyException.h"
-#include "../CompileConfig.h"
+#include "../common/CompileConfig.h"
 
 using namespace std;
 

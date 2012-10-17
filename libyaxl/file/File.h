@@ -7,6 +7,8 @@
     #include "PosixFileImpl.h"
 #endif
 
+#include "../common/CompileConfig.h"
+
 namespace yaxl {
 namespace file {
 

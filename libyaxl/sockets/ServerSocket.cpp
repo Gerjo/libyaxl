@@ -9,7 +9,7 @@ namespace yaxl {
         }
 
         ServerSocket::ServerSocket(const ServerSocket& orig) {
-
+            
         }
 
         ServerSocket::~ServerSocket() {

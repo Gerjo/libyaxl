@@ -6,6 +6,7 @@
 #include <direct.h>
 
 #include "AbstractFile.h"
+#include "../common/CompileConfig.h"
 
 namespace yaxl {
 namespace file {
@@ -13,7 +14,7 @@ namespace file {
 class WinFileImpl;
 typedef WinFileImpl File;
 
-class WinFileImpl : public AbstractFile {
+class LIBEXPORT WinFileImpl : public AbstractFile {
 public:
 	WinFileImpl(string path);
     virtual ~WinFileImpl();

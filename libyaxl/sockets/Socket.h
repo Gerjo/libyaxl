@@ -24,7 +24,7 @@
 	#include <arpa/inet.h>
 #endif
 
-#include "../CompileConfig.h"
+#include "../common/CompileConfig.h"
 
 #ifndef MSG_NOSIGNAL
 	#define MSG_NOSIGNAL 0

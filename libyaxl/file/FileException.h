@@ -2,14 +2,14 @@
 #define	FILEEXCEPTION_H
 
 #include "../common/YaxlException.h"
-
+#include "../common/CompileConfig.h"
 
 namespace yaxl {
     namespace file {
-        class FileException : public YaxlException {
+        class LIBEXPORT FileException : public YaxlException {
         public:
             FileException(string error) : YaxlException(error) {
-                
+
             }
         };
     }

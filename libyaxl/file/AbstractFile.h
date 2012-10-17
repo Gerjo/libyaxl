@@ -11,7 +11,7 @@
 #include <iostream>
 
 #include "md5.h"
-#include "../CompileConfig.h"
+#include "../common/CompileConfig.h"
 
 namespace yaxl {
 namespace file {

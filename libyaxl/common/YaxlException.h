@@ -4,11 +4,12 @@
 #include <exception>
 #include <string>
 #include <iostream>
+#include "../common/CompileConfig.h"
 
 using namespace std;
 
 namespace yaxl {
-    class YaxlException : public exception {
+    class YaxlException LIBEXPORT : public exception {
     public:
         YaxlException(const string error) : _error(error) {
             #ifdef WIN32
