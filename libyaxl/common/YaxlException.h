@@ -9,7 +9,7 @@
 using namespace std;
 
 namespace yaxl {
-    class YaxlException LIBEXPORT : public exception {
+    class LIBEXPORT YaxlException : public exception {
     public:
         YaxlException(const string error) : _error(error) {
             #ifdef WIN32
