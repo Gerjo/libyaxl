@@ -38,13 +38,15 @@ OBJECTFILES= \
 	${OBJECTDIR}/libyaxl/sockets/InputStream.o \
 	${OBJECTDIR}/libyaxl/sockets/Socket.o \
 	${OBJECTDIR}/libyaxl/sockets/OutputStream.o \
+	${OBJECTDIR}/libyaxl/concurrency/ScopedLock.o \
 	${OBJECTDIR}/libyaxl/concurrency/Thread.o \
 	${OBJECTDIR}/libyaxl/examples/examples.o \
 	${OBJECTDIR}/libyaxl/file/WinFileImpl.o \
 	${OBJECTDIR}/libyaxl/file/AbstractFile.o \
 	${OBJECTDIR}/libyaxl/sockets/ServerSocket.o \
 	${OBJECTDIR}/libyaxl/file/PosixFileImpl.o \
-	${OBJECTDIR}/libyaxl/file/md5.o
+	${OBJECTDIR}/libyaxl/file/md5.o \
+	${OBJECTDIR}/libyaxl/concurrency/Mutex.o
 
 
 # C Compiler Flags
@@ -86,6 +88,11 @@ ${OBJECTDIR}/libyaxl/sockets/OutputStream.o: libyaxl/sockets/OutputStream.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/sockets/OutputStream.o libyaxl/sockets/OutputStream.cpp
 
+${OBJECTDIR}/libyaxl/concurrency/ScopedLock.o: libyaxl/concurrency/ScopedLock.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/concurrency/ScopedLock.o libyaxl/concurrency/ScopedLock.cpp
+
 ${OBJECTDIR}/libyaxl/concurrency/Thread.o: libyaxl/concurrency/Thread.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency
 	${RM} $@.d
@@ -120,6 +127,11 @@ ${OBJECTDIR}/libyaxl/file/md5.o: libyaxl/file/md5.cpp
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/file
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/file/md5.o libyaxl/file/md5.cpp
+
+${OBJECTDIR}/libyaxl/concurrency/Mutex.o: libyaxl/concurrency/Mutex.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/concurrency/Mutex.o libyaxl/concurrency/Mutex.cpp
 
 # Subprojects
 .build-subprojects:

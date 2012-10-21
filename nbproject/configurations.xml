@@ -3,11 +3,16 @@
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="libyaxl" displayName="libyaxl" projectFiles="true">
       <logicalFolder name="common" displayName="common" projectFiles="true">
+        <itemPath>libyaxl/common/CompileConfig.h</itemPath>
         <itemPath>libyaxl/common/YaxlException.h</itemPath>
       </logicalFolder>
       <logicalFolder name="concurrency" displayName="concurrency" projectFiles="true">
         <itemPath>libyaxl/concurrency/ConcurrencyException.h</itemPath>
+        <itemPath>libyaxl/concurrency/Mutex.cpp</itemPath>
+        <itemPath>libyaxl/concurrency/Mutex.h</itemPath>
         <itemPath>libyaxl/concurrency/Runnable.h</itemPath>
+        <itemPath>libyaxl/concurrency/ScopedLock.cpp</itemPath>
+        <itemPath>libyaxl/concurrency/ScopedLock.h</itemPath>
         <itemPath>libyaxl/concurrency/Thread.cpp</itemPath>
         <itemPath>libyaxl/concurrency/Thread.h</itemPath>
         <itemPath>libyaxl/concurrency/concurrency.h</itemPath>
