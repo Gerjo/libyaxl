@@ -44,6 +44,7 @@ using namespace std;
 class LIBEXPORT Socket {
 public:
     Socket(string address, string port);
+    Socket(string address, int port);
     virtual ~Socket();
     void close(void);
 

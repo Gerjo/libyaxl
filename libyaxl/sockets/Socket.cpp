@@ -14,6 +14,17 @@ Socket::Socket(string address, string port) : _isConnected(false) {
     connect();
 }
 
+Socket::Socket(string address, int port) : _isConnected(false) {
+    stringstream ss;
+    ss << port;
+    
+    this->address = address;
+    this->port    = ss.str();
+
+    createStreams();
+    connect();
+}
+
 // Private, available via friendclass.
 Socket::Socket(int socketFd) {
     this->socketFd = socketFd;
