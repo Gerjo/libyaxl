@@ -34,6 +34,35 @@ Socket::~Socket() {
     delete inputStream;
 }
 
+void Socket::setTcpNoDelay(bool newState) {
+    int yes = 1;
+    int no  = 0;
+
+    int r;
+
+    if(newState) {
+        r = setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, (void*) &yes, sizeof(yes));
+    } else {
+        r = setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, (void*) &no, sizeof(no));
+    }
+
+    if(r == -1) {
+        throw SocketException(strerror(errno));
+    }
+
+    /*if(!newState) {
+        r = setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, (void*) &yes, sizeof(yes));
+    } else {
+        r = setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, (void*) &no, sizeof(no));
+    }
+
+    if(r == -1) {
+        throw SocketException(strerror(errno));
+    }
+     * */
+    cout << "Set TCP_NODELAY to " << (int) newState << endl;
+}
+
 void Socket::createStreams(void) {
     outputStream  = new OutputStream(*this);
     inputStream   = new InputStream(*this);

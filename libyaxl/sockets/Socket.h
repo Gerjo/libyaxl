@@ -24,6 +24,9 @@
 	#include <arpa/inet.h>
 #endif
 
+// Probably breaks windows:
+#include <netinet/tcp.h>
+
 #include "../common/CompileConfig.h"
 
 #ifndef MSG_NOSIGNAL
@@ -51,6 +54,7 @@ public:
     friend class InputStream;
 
 	const bool isConnected(void);
+    void setTcpNoDelay(bool newState);
 
     friend class ServerSocket;
 private:
