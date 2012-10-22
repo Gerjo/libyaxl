@@ -3,17 +3,36 @@
 namespace yaxl {
     namespace socket {
 
-        ServerSocket::ServerSocket(int port) : _port(port) {
-            _socketFd = 0;
+        ServerSocket::ServerSocket(int port, int backlog) :
+        _port(port),
+        _backlog(backlog),
+        _socketFd(0)
+        {
             setup();
         }
 
         ServerSocket::ServerSocket(const ServerSocket& orig) {
-            
+
         }
 
         ServerSocket::~ServerSocket() {
 
+        }
+
+        void ServerSocket::setReuseAddress(bool newState) {
+            const int& newFlag = newState ? yes : no;
+
+            if(::setsockopt(_socketFd, SOL_SOCKET, SO_REUSEADDR, &newFlag, sizeof(newFlag)) < 0) {
+                throw SocketException(strerror(errno));
+            }
+        }
+
+        void ServerSocket::setKeepAlive(bool newState) {
+            const int& newFlag = newState ? yes : no;
+
+            if(::setsockopt(_socketFd, SOL_SOCKET, SO_KEEPALIVE, &newFlag, sizeof(newFlag)) < 0) {
+                throw SocketException(strerror(errno));
+            }
         }
 
         void ServerSocket::setup() {
@@ -29,16 +48,6 @@ namespace yaxl {
                 throw SocketException(strerror(errno));
             }
 
-
-            char yes = 1;
-            char no  = 1;
-
-            if((::setsockopt(_socketFd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1 ) || // prevents the "port in use" err.
-                (::setsockopt(_socketFd, SOL_SOCKET, SO_KEEPALIVE, &no, sizeof(int)) == -1 )){
-
-                throw SocketException(strerror(errno));
-            }
-
             sockaddr_in serv_addr;
             serv_addr.sin_family        = AF_INET;
             serv_addr.sin_addr.s_addr   = INADDR_ANY; // TODO: variable.
@@ -48,7 +57,7 @@ namespace yaxl {
                 throw SocketException(strerror(errno));
             }
 
-            if (::listen(_socketFd, 10) < 0) {
+            if (::listen(_socketFd, _backlog) < 0) {
                 throw SocketException(strerror(errno));
             }
         }
@@ -57,7 +66,7 @@ namespace yaxl {
             sockaddr_in cli_addr;
             socklen_t clilen = sizeof(cli_addr);
 
-            int newsockfd   = ::accept(_socketFd, (sockaddr *) &cli_addr, &clilen);
+            int newsockfd   = ::accept(_socketFd, (sockaddr*) &cli_addr, &clilen);
 
             if(newsockfd <= 0) {
                 throw SocketException(strerror(errno));

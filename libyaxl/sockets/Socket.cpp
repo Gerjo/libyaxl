@@ -17,7 +17,7 @@ Socket::Socket(string address, string port) : _isConnected(false) {
 Socket::Socket(string address, int port) : _isConnected(false) {
     stringstream ss;
     ss << port;
-    
+
     this->address = address;
     this->port    = ss.str();
 
@@ -46,32 +46,19 @@ Socket::~Socket() {
 }
 
 void Socket::setTcpNoDelay(bool newState) {
-    int yes = 1;
-    int no  = 0;
+    const int& newFlag = newState ? yes : no;
 
-    int r;
-
-    if(newState) {
-        r = setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, (void*) &yes, sizeof(yes));
-    } else {
-        r = setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, (void*) &no, sizeof(no));
-    }
-
-    if(r == -1) {
+    if(setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, (void*) &newFlag, sizeof(newFlag)) < 0) {
         throw SocketException(strerror(errno));
     }
+}
 
-    /*if(!newState) {
-        r = setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, (void*) &yes, sizeof(yes));
-    } else {
-        r = setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, (void*) &no, sizeof(no));
-    }
+void Socket::setTcpCork(bool newState) {
+    const int& newFlag = newState ? yes : no;
 
-    if(r == -1) {
+    if(setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, (void*) &newFlag, sizeof(newFlag)) < 0) {
         throw SocketException(strerror(errno));
     }
-     * */
-    cout << "Set TCP_NODELAY to " << (int) newState << endl;
 }
 
 void Socket::createStreams(void) {

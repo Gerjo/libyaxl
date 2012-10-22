@@ -56,9 +56,13 @@ public:
 
 	const bool isConnected(void);
     void setTcpNoDelay(bool newState);
+    void setTcpCork(bool newState);
 
     friend class ServerSocket;
 private:
+    const int yes = 1;
+    const int no  = 0;
+
 	Socket(const Socket& orig);
     Socket(int socketFd);
     string address;

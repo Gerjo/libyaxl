@@ -46,7 +46,6 @@ namespace yaxl {
                 int bytesRead;
 
                 do {
-
                     bytesRead = ::recv(socketFd, reinterpret_cast<char*> (&buff2), readChunkSize, 0);
 
                     // We can read no more data at this time.
