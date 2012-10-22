@@ -77,6 +77,7 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
+          <commandLine>-lpthread</commandLine>
         </ccTool>
         <linkerTool>
           <output>../dist/libyaxl.${CND_DLIB_EXT}</output>
@@ -98,6 +99,7 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
+          <commandLine>-lpthread</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>

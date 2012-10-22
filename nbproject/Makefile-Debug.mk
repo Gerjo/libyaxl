@@ -53,8 +53,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-lpthread
+CXXFLAGS=-lpthread
 
 # Fortran Compiler Flags
 FFLAGS=
