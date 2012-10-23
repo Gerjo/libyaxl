@@ -54,8 +54,7 @@ namespace yaxl {
                     }
 
                     if (bytesRead == -1) {
-                        perror("Cannot read because");
-                        exit(1);
+                        throw SocketException(strerror(errno));
                     }
 
                     concatToBuffer(buff2, bytesRead);
@@ -116,6 +115,5 @@ namespace yaxl {
             buffer.pop_front();
             return tmp;
         }
-
     }
 }
