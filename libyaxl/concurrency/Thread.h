@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <thread>
+#include <functional>
 
 #include "Runnable.h"
 #include "ConcurrencyException.h"
@@ -19,7 +20,6 @@ namespace yaxl {
             Thread(Runnable* runnable);
             virtual ~Thread();
             virtual void run();
-            void operator()();
             void start();
             void join();
 

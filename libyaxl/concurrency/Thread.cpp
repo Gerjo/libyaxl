@@ -25,7 +25,11 @@ namespace yaxl {
 
         void Thread::start() {
             if(_thread == 0) {
-                _thread = new std::thread(std::ref(*this));
+                _thread = new std::thread(
+                    [this] () {
+                        run();
+                    }
+                );
             } else {
                 throw ConcurrencyException("Thread is already started.");
             }
@@ -41,11 +45,6 @@ namespace yaxl {
             if(_runnable != 0) {
                 _runnable->run();
             }
-        }
-
-        // Callback from (native) threads:
-        void Thread::operator()() {
-            run();
         }
     }
 }
