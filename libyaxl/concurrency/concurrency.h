@@ -6,6 +6,7 @@
 #include "Thread.h"
 #include "Mutex.h"
 #include "ScopedLock.h"
+#include "Stack.h"
 
 #endif	/* CONCURRENCY_H */
 

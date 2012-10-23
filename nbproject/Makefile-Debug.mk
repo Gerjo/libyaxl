@@ -45,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/libyaxl/file/AbstractFile.o \
 	${OBJECTDIR}/libyaxl/sockets/ServerSocket.o \
 	${OBJECTDIR}/libyaxl/file/PosixFileImpl.o \
+	${OBJECTDIR}/libyaxl/concurrency/Stack.o \
 	${OBJECTDIR}/libyaxl/file/md5.o \
 	${OBJECTDIR}/libyaxl/concurrency/Mutex.o
 
@@ -122,6 +123,11 @@ ${OBJECTDIR}/libyaxl/file/PosixFileImpl.o: libyaxl/file/PosixFileImpl.cpp
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/file
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/file/PosixFileImpl.o libyaxl/file/PosixFileImpl.cpp
+
+${OBJECTDIR}/libyaxl/concurrency/Stack.o: libyaxl/concurrency/Stack.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/concurrency/Stack.o libyaxl/concurrency/Stack.cpp
 
 ${OBJECTDIR}/libyaxl/file/md5.o: libyaxl/file/md5.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/file
