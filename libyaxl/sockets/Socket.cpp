@@ -50,6 +50,10 @@ Socket::~Socket() {
     delete inputStream;
 }
 
+int Socket::getFd() {
+    return socketFd;
+}
+
 void Socket::setTcpNoDelay(bool newState) {
     const char& newFlag = newState ? yes : no;
 
