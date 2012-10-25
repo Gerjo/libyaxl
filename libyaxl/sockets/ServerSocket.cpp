@@ -1,4 +1,5 @@
 #include "ServerSocket.h"
+#include "Socket.h"
 
 namespace yaxl {
     namespace socket {

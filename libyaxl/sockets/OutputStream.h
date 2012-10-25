@@ -18,7 +18,7 @@
 
 #endif
 
-#include "Socket.h"
+
 #include "../common/CompileConfig.h"
 
 namespace yaxl {
@@ -26,6 +26,7 @@ namespace socket {
 
 using namespace std;
 
+class Socket;
 class LIBEXPORT OutputStream {
 public:
     OutputStream(Socket& socket);

@@ -8,6 +8,7 @@
 #include <vector>
 
 #include "InputStream.h"
+#include "Socket.h"
 
 namespace yaxl {
     namespace socket {

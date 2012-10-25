@@ -11,7 +11,6 @@
 
 #ifdef WIN32
 	#include <ws2tcpip.h>
-	#pragma comment(lib, "Ws2_32.lib")
 #else
 	#include <unistd.h>
 	#include <netdb.h>

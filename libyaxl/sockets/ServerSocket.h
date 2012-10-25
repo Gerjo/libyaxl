@@ -2,12 +2,11 @@
 #define	SERVERSOCKET_H
 
 #include "SocketException.h"
-#include "Socket.h"
 #include "../common/CompileConfig.h"
 
 namespace yaxl {
     namespace socket {
-
+        class Socket;
         class LIBEXPORT ServerSocket {
         public:
             ServerSocket(int port, int backlog = 10);

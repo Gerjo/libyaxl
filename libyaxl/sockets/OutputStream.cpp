@@ -7,6 +7,7 @@
 
 #include "OutputStream.h"
 #include "SocketException.h"
+#include "Socket.h"
 
 namespace yaxl {
     namespace socket {
