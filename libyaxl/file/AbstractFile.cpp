@@ -81,15 +81,15 @@ int AbstractFile::size() {
     openInputFileStream();
 
     // Take note of the current internal pointer offset:
-    const int pointerPos = _inputFileStream->tellg();
+    std::streamoff pointerPos = _inputFileStream->tellg();
 
     _inputFileStream->seekg(0, ios::end);
-    int fileSize = _inputFileStream->tellg();
+    std::streamoff fileSize = _inputFileStream->tellg();
 
     // Restore the internal pointer.
     _inputFileStream->seekg(pointerPos, ios::beg);
 
-    return fileSize;
+    return static_cast<int>(fileSize);
 }
 
 void AbstractFile::closeStreams(void) {
@@ -114,17 +114,17 @@ void AbstractFile::openInputFileStream(bool createFile) {
 
 int AbstractFile::getRemainingSize() {
     int size  = this->size();
-    int pntr  = _inputFileStream->tellg();
-    int delta = size - pntr;
+    std::streamoff pntr = _inputFileStream->tellg();
+    std::streamoff delta = size - pntr;
 
-    return delta;
+    return static_cast<int>(delta);
 }
 
 string AbstractFile::computeMD5(void) {
     openInputFileStream();
 
     // Take note of the pointer, and then reset it.
-    int pointer = _inputFileStream->tellg();
+    std::streamoff pointer = _inputFileStream->tellg();
     reset();
     MD5 md5(readAll());
 
