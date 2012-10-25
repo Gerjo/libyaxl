@@ -5,6 +5,7 @@ namespace yaxl {
     namespace socket {
 
         ServerSocket::ServerSocket(int port, int backlog) :
+        yes(1), no(0),
         _port(port),
         _backlog(backlog),
         _socketFd(0)
@@ -12,7 +13,7 @@ namespace yaxl {
             setup();
         }
 
-        ServerSocket::ServerSocket(const ServerSocket& orig) {
+        ServerSocket::ServerSocket(const ServerSocket& orig) :  yes(1), no(0) {
 
         }
 
@@ -21,17 +22,17 @@ namespace yaxl {
         }
 
         void ServerSocket::setReuseAddress(bool newState) {
-            const char& newFlag = newState ? yes : no;
+            const int& newFlag = newState ? yes : no;
 
-            if(::setsockopt(_socketFd, SOL_SOCKET, SO_REUSEADDR, &newFlag, sizeof(newFlag)) < 0) {
+            if(::setsockopt(_socketFd, SOL_SOCKET, SO_REUSEADDR, (void*) &newFlag, sizeof(newFlag)) < 0) {
                 throw SocketException(strerror(errno));
             }
         }
 
         void ServerSocket::setKeepAlive(bool newState) {
-            const char& newFlag = newState ? yes : no;
+            const int& newFlag = newState ? yes : no;
 
-            if(::setsockopt(_socketFd, SOL_SOCKET, SO_KEEPALIVE, &newFlag, sizeof(newFlag)) < 0) {
+            if(::setsockopt(_socketFd, SOL_SOCKET, SO_KEEPALIVE, (void*) &newFlag, sizeof(newFlag)) < 0) {
                 throw SocketException(strerror(errno));
             }
         }

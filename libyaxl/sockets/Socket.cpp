@@ -6,7 +6,7 @@
 namespace yaxl {
 namespace socket {
 
-Socket::Socket(string address, string port) : _isConnected(false) {
+Socket::Socket(string address, string port) : _isConnected(false), yes(1), no(0) {
     this->address = address;
     this->port    = port;
 
@@ -14,7 +14,7 @@ Socket::Socket(string address, string port) : _isConnected(false) {
     connect();
 }
 
-Socket::Socket(string address, int port) : _isConnected(false) {
+Socket::Socket(string address, int port) : _isConnected(false), yes(1), no(0) {
     stringstream ss;
     ss << port;
 
@@ -26,13 +26,13 @@ Socket::Socket(string address, int port) : _isConnected(false) {
 }
 
 // Private, available via friendclass.
-Socket::Socket(int socketFd) {
+Socket::Socket(int socketFd) : yes(1), no(0)  {
     this->socketFd = socketFd;
     _isConnected   = true;
     createStreams();
 }
 
-Socket::Socket(const Socket& orig) : _isConnected(false) {
+Socket::Socket(const Socket& orig) : _isConnected(false), yes(1), no(0)  {
     throw SocketException("Sockets cannot be copied.");
 }
 
@@ -46,24 +46,25 @@ Socket::~Socket() {
 }
 
 void Socket::setTcpNoDelay(bool newState) {
-    const char& newFlag = newState ? yes : no;
+    const int& newFlag = newState ? yes : no;
 
-    if(setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, &newFlag, sizeof(newFlag)) < 0) {
+    if(setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, (void*) &newFlag, sizeof(newFlag)) < 0) {
         throw SocketException(strerror(errno));
     }
 }
 
 void Socket::setTcpCork(bool newState) {
-    const char& newFlag = newState ? yes : no;
+    const int& newFlag = newState ? yes : no;
 
     // TCP_CORK does not exist on Windows.
 #ifndef _WIN32
-    if(setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, &newFlag, sizeof(newFlag)) < 0) {
+    if(setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, (void*) &newFlag, sizeof(newFlag)) < 0) {
         throw SocketException(strerror(errno));
     }
-#endif
+#else
     std::string error("Not implemented on the Windows platforms.");
     throw SocketException(error);
+#endif
 }
 
 void Socket::createStreams(void) {
