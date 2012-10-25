@@ -18,8 +18,8 @@ namespace yaxl {
             void setKeepAlive(bool newState);
 
         private:
-            const int yes = 1;
-            const int no  = 0;
+            const static int yes = 1;
+            const static int no  = 0;
 
             ServerSocket(const ServerSocket& orig);
             int _socketFd;

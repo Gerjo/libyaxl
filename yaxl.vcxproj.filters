@@ -18,6 +18,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\libyaxl\libyaxl\common\CompileConfig.h">
+      <Filter>common</Filter>
+    </ClInclude>
     <ClInclude Include="..\libyaxl\libyaxl\common\YaxlException.h">
       <Filter>common</Filter>
     </ClInclude>
@@ -27,7 +30,25 @@
     <ClInclude Include="..\libyaxl\libyaxl\concurrency\ConcurrencyException.h">
       <Filter>concurrency</Filter>
     </ClInclude>
+    <ClCompile Include="..\libyaxl\libyaxl\concurrency\Mutex.cpp">
+      <Filter>concurrency</Filter>
+    </ClCompile>
+    <ClInclude Include="..\libyaxl\libyaxl\concurrency\Mutex.h">
+      <Filter>concurrency</Filter>
+    </ClInclude>
     <ClInclude Include="..\libyaxl\libyaxl\concurrency\Runnable.h">
+      <Filter>concurrency</Filter>
+    </ClInclude>
+    <ClCompile Include="..\libyaxl\libyaxl\concurrency\ScopedLock.cpp">
+      <Filter>concurrency</Filter>
+    </ClCompile>
+    <ClInclude Include="..\libyaxl\libyaxl\concurrency\ScopedLock.h">
+      <Filter>concurrency</Filter>
+    </ClInclude>
+    <ClCompile Include="..\libyaxl\libyaxl\concurrency\Stack.cpp">
+      <Filter>concurrency</Filter>
+    </ClCompile>
+    <ClInclude Include="..\libyaxl\libyaxl\concurrency\Stack.h">
       <Filter>concurrency</Filter>
     </ClInclude>
     <ClCompile Include="..\libyaxl\libyaxl\concurrency\Thread.cpp">
@@ -105,7 +126,6 @@
     <ClInclude Include="..\libyaxl\libyaxl\sockets\Sockets.h">
       <Filter>sockets</Filter>
     </ClInclude>
-    <ClInclude Include="..\libyaxl\libyaxl\CompileConfig.h" />
     <ClInclude Include="..\libyaxl\libyaxl\yaxl.h" />
   </ItemGroup>
 </Project>

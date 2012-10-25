@@ -10,22 +10,16 @@
 #include <sys/types.h>
 
 #ifdef WIN32
-	#include <winsock2.h>
 	#include <ws2tcpip.h>
-	#include <windows.h>
-
 	#pragma comment(lib, "Ws2_32.lib")
-
 #else
 	#include <unistd.h>
 	#include <netdb.h>
 	#include <netinet/in.h>
+    #include <netinet/tcp.h>
 	#include <sys/socket.h>
 	#include <arpa/inet.h>
 #endif
-
-// Probably breaks windows:
-#include <netinet/tcp.h>
 
 #include "../common/CompileConfig.h"
 
@@ -60,8 +54,8 @@ public:
 
     friend class ServerSocket;
 private:
-    const int yes = 1;
-    const int no  = 0;
+    const static int yes = 1;
+    const static int no  = 0;
 
 	Socket(const Socket& orig);
     Socket(int socketFd);
