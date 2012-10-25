@@ -1,17 +1,7 @@
 #ifndef SOCKET_H
 #define	SOCKET_H
 
-#include <string>
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <errno.h>
-#include <string.h>
-#include <sys/types.h>
-
-#ifdef WIN32
-	#include <ws2tcpip.h>
-#else
+#ifndef WIN32
 	#include <unistd.h>
 	#include <netdb.h>
 	#include <netinet/in.h>
@@ -19,6 +9,14 @@
 	#include <sys/socket.h>
 	#include <arpa/inet.h>
 #endif
+
+#include <string>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <string.h>
+#include <sys/types.h>
 
 #include "../common/CompileConfig.h"
 

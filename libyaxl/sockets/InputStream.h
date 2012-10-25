@@ -15,10 +15,7 @@
 #include <sstream>
 #include <algorithm>
 
-#ifdef WIN32
-#include <winsock2.h>
-#include <windows.h>
-#else
+#ifndef WIN32
 #include <sys/stat.h>
 #include <sys/select.h>
 #include <sys/time.h>

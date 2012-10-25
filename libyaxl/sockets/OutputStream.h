@@ -11,14 +11,6 @@
 #include <string>
 #include <sstream>
 
-#ifdef WIN32
-	#include <winsock2.h>
-	#include <windows.h>
-#else
-
-#endif
-
-
 #include "../common/CompileConfig.h"
 
 namespace yaxl {
