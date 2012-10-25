@@ -4,6 +4,9 @@
  *
  * Created on September 17, 2012, 6:30 PM
  */
+#ifdef _WIN32
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 
 #include "OutputStream.h"
 #include "SocketException.h"
