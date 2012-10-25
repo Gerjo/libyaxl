@@ -22,17 +22,17 @@ namespace yaxl {
         }
 
         void ServerSocket::setReuseAddress(bool newState) {
-            const int& newFlag = newState ? yes : no;
+            const char& newFlag = newState ? yes : no;
 
-            if(::setsockopt(_socketFd, SOL_SOCKET, SO_REUSEADDR, (void*) &newFlag, sizeof(newFlag)) < 0) {
+            if(::setsockopt(_socketFd, SOL_SOCKET, SO_REUSEADDR, &newFlag, sizeof(int)) < 0) {
                 throw SocketException(strerror(errno));
             }
         }
 
         void ServerSocket::setKeepAlive(bool newState) {
-            const int& newFlag = newState ? yes : no;
+            const char& newFlag = newState ? yes : no;
 
-            if(::setsockopt(_socketFd, SOL_SOCKET, SO_KEEPALIVE, (void*) &newFlag, sizeof(newFlag)) < 0) {
+            if(::setsockopt(_socketFd, SOL_SOCKET, SO_KEEPALIVE, &newFlag, sizeof(int)) < 0) {
                 throw SocketException(strerror(errno));
             }
         }

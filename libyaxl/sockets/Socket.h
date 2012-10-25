@@ -53,8 +53,8 @@ public:
 
     friend class ServerSocket;
 private:
-    const int yes ;
-    const int no;
+    const char yes;
+    const char no;
 
 	Socket(const Socket& orig);
     Socket(int socketFd);

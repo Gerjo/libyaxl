@@ -46,19 +46,19 @@ Socket::~Socket() {
 }
 
 void Socket::setTcpNoDelay(bool newState) {
-    const int& newFlag = newState ? yes : no;
+    const char& newFlag = newState ? yes : no;
 
-    if(setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, (void*) &newFlag, sizeof(newFlag)) < 0) {
+    if(setsockopt(socketFd, IPPROTO_TCP, TCP_NODELAY, &newFlag, sizeof(int)) < 0) {
         throw SocketException(strerror(errno));
     }
 }
 
 void Socket::setTcpCork(bool newState) {
-    const int& newFlag = newState ? yes : no;
+    const char& newFlag = newState ? yes : no;
 
     // TCP_CORK does not exist on Windows.
 #ifndef _WIN32
-    if(setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, (void*) &newFlag, sizeof(newFlag)) < 0) {
+    if(setsockopt(socketFd, IPPROTO_TCP, TCP_CORK, &newFlag, sizeof(int)) < 0) {
         throw SocketException(strerror(errno));
     }
 #else
