@@ -50,6 +50,8 @@ public:
     void setTcpCork(bool newState);
 
     friend class ServerSocket;
+
+    int getFd();
 private:
     const char yes;
     const char no;
