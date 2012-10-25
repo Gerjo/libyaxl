@@ -83,7 +83,7 @@ namespace yaxl {
 
             return str.str();
         }
-
+        
         char InputStream::read(void) {
             const int limit = calculateReadLimit(1);
 

@@ -11,9 +11,9 @@
 namespace yaxl {
 namespace socket {
 
-Socket::Socket(string address, string port) : _isConnected(false), yes(1), no(0) {
-    this->address = address;
-    this->port    = port;
+Socket::Socket(const string& address, const string& port) : _isConnected(false), yes(1), no(0) {
+    this->address.append(address.c_str());
+    this->port.append(port.c_str());
 
     createStreams();
     connect();
