@@ -55,6 +55,8 @@ namespace yaxl {
                 throw SocketException(strerror(errno));
             }
 
+            setReuseAddress(true);
+
             sockaddr_in serv_addr;
             serv_addr.sin_family        = AF_INET;
             serv_addr.sin_addr.s_addr   = INADDR_ANY; // TODO: variable.
