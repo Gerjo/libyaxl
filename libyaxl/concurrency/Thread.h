@@ -22,6 +22,8 @@ namespace yaxl {
             virtual void run();
             void start();
             void join();
+            void detach();
+            bool joinable();
 
         private:
             Thread(const Thread& orig);
