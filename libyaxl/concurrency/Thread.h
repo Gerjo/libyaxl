@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <thread>
+#include <chrono>
 #include <functional>
 
 #include "Runnable.h"
@@ -24,6 +25,9 @@ namespace yaxl {
             void join();
             void detach();
             bool joinable();
+
+        protected:
+            void sleep(long milliseconds);
 
         private:
             Thread(const Thread& orig);

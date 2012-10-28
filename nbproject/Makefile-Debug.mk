@@ -54,8 +54,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-lpthread
-CXXFLAGS=-lpthread
+CCFLAGS=-lpthread -D_GLIBCXX_USE_NANOSLEEP
+CXXFLAGS=-lpthread -D_GLIBCXX_USE_NANOSLEEP
 
 # Fortran Compiler Flags
 FFLAGS=

@@ -74,5 +74,11 @@ namespace yaxl {
                 return false;
             }
         }
+
+        // Protected method.
+        void Thread::sleep(long milliseconds) {
+            std::chrono::milliseconds duration(milliseconds);
+            std::this_thread::sleep_for(duration);
+        }
     }
 }

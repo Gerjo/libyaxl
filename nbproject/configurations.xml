@@ -79,7 +79,7 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
-          <commandLine>-lpthread</commandLine>
+          <commandLine>-lpthread -D_GLIBCXX_USE_NANOSLEEP</commandLine>
         </ccTool>
         <linkerTool>
           <output>../dist/libyaxl.${CND_DLIB_EXT}</output>
