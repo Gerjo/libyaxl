@@ -22,12 +22,10 @@ namespace yaxl {
             }
 
             T* tryPop(void) {
-                yaxl::concurrency::ScopedLock meh(_mutex);
-
                 if(_storage.empty()) {
                     return 0;
                 }
-
+                //yaxl::concurrency::ScopedLock meh(_mutex);
                 T* item = _storage.front();
 
                 // Hopefully due to a "scoped" lock, this won't yield
@@ -38,7 +36,7 @@ namespace yaxl {
             }
 
             void push(T* item) {
-                yaxl::concurrency::ScopedLock meh(_mutex);
+                //yaxl::concurrency::ScopedLock meh(_mutex);
                 _storage.push_back(item);
             }
 
