@@ -36,6 +36,12 @@
     <ClInclude Include="..\libyaxl\libyaxl\concurrency\Mutex.h">
       <Filter>concurrency</Filter>
     </ClInclude>
+    <ClCompile Include="..\libyaxl\libyaxl\concurrency\Queue.cpp">
+      <Filter>concurrency</Filter>
+    </ClCompile>
+    <ClInclude Include="..\libyaxl\libyaxl\concurrency\Queue.h">
+      <Filter>concurrency</Filter>
+    </ClInclude>
     <ClInclude Include="..\libyaxl\libyaxl\concurrency\Runnable.h">
       <Filter>concurrency</Filter>
     </ClInclude>
