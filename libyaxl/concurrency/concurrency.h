@@ -7,6 +7,7 @@
 #include "Mutex.h"
 #include "ScopedLock.h"
 #include "Stack.h"
+#include "Queue.h"
 
 #endif	/* CONCURRENCY_H */
 

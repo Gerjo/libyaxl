@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/libyaxl/sockets/InputStream.o \
 	${OBJECTDIR}/libyaxl/sockets/Socket.o \
 	${OBJECTDIR}/libyaxl/sockets/OutputStream.o \
+	${OBJECTDIR}/libyaxl/concurrency/Queue.o \
 	${OBJECTDIR}/libyaxl/concurrency/ScopedLock.o \
 	${OBJECTDIR}/libyaxl/concurrency/Thread.o \
 	${OBJECTDIR}/libyaxl/examples/examples.o \
@@ -88,6 +89,11 @@ ${OBJECTDIR}/libyaxl/sockets/OutputStream.o: libyaxl/sockets/OutputStream.cpp
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/sockets
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/sockets/OutputStream.o libyaxl/sockets/OutputStream.cpp
+
+${OBJECTDIR}/libyaxl/concurrency/Queue.o: libyaxl/concurrency/Queue.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/concurrency/Queue.o libyaxl/concurrency/Queue.cpp
 
 ${OBJECTDIR}/libyaxl/concurrency/ScopedLock.o: libyaxl/concurrency/ScopedLock.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency

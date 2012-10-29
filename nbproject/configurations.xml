@@ -10,6 +10,8 @@
         <itemPath>libyaxl/concurrency/ConcurrencyException.h</itemPath>
         <itemPath>libyaxl/concurrency/Mutex.cpp</itemPath>
         <itemPath>libyaxl/concurrency/Mutex.h</itemPath>
+        <itemPath>libyaxl/concurrency/Queue.cpp</itemPath>
+        <itemPath>libyaxl/concurrency/Queue.h</itemPath>
         <itemPath>libyaxl/concurrency/Runnable.h</itemPath>
         <itemPath>libyaxl/concurrency/ScopedLock.cpp</itemPath>
         <itemPath>libyaxl/concurrency/ScopedLock.h</itemPath>
