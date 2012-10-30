@@ -28,8 +28,6 @@ namespace yaxl {
                 //yaxl::concurrency::ScopedLock meh(_mutex);
                 T* item = _storage.front();
 
-                // Hopefully due to a "scoped" lock, this won't yield
-                // deadlocks. TODO: reseach that.
                 _storage.pop_front();
 
                 return item;
