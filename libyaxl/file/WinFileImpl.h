@@ -7,6 +7,7 @@
 
 #include "AbstractFile.h"
 #include "../common/CompileConfig.h"
+#include "../common/YaxlException.h"
 
 namespace yaxl {
 namespace file {

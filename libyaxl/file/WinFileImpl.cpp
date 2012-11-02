@@ -14,6 +14,7 @@ WinFileImpl::~WinFileImpl() {
 }
 
 long WinFileImpl::loadTimes(void) {
+    // TODO: 0 is not a valid value for an file handle.
 	return GetFileTime(0, &_timeCreated, &_timeLastAccess, &_timeLastWrite);
 }
 
@@ -117,7 +118,8 @@ vector<File> WinFileImpl::listFiles() {
 }
 
 void WinFileImpl::mkDir(const string& dirName) {
-    _mkdir(dirName.c_str());
+    if(_mkdir(dirName.c_str()) != 0)
+        throw new YaxlException("Failed to create directory");
 }
 
 }
