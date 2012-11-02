@@ -18,16 +18,14 @@ namespace yaxl {
         }
 
         Thread::~Thread() {
-            if(_thread != 0) {
-                // NB: if you are getting a "called without active exception"
-                // and you are performing a delete call on a Thread instance
-                // then you must *probably* call detatch() on this thread first.
+            // NB: if you are getting a "called without active exception"
+            // and you are performing a delete call on a Thread instance
+            // then you must *probably* call detatch() on this thread first.
 
-                // More cryptic: Only the thread that spawned a thread can stop
-                // that thread, onless this thread is detached, or joined and both
-                // threads run out of scope. -- Gerjo
-                delete _thread;
-            }
+            // More cryptic: Only the thread that spawned a thread can stop
+            // that thread, onless this thread is detached, or joined and both
+            // threads run out of scope. -- Gerjo
+            delete _thread;
         }
 
         void Thread::start() {
@@ -35,7 +33,7 @@ namespace yaxl {
                 _thread = new std::thread(
                     [this] () {
                         run();
-                    }
+                }
                 );
             } else {
                 throw ConcurrencyException("Thread is already started.");

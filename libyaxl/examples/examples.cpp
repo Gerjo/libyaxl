@@ -40,6 +40,7 @@ void server() {
     client->getOutputStream().write("You just connected, how nice.\n");
 
     delete client;
+    client = 0;
 
     cout << "completed." << endl;
 }

@@ -47,7 +47,9 @@ Socket::~Socket() {
 	}
 
     delete outputStream;
+    outputStream = 0;
     delete inputStream;
+    inputStream = 0;
 }
 
 int Socket::getFd() {
