@@ -1,4 +1,5 @@
 #include "AbstractFile.h"
+#include "FileException.h"
 
 namespace yaxl {
 namespace file {
@@ -102,9 +103,7 @@ void AbstractFile::closeStreams(void) {
 
 void AbstractFile::openInputFileStream(bool createFile) {
     if(!createFile && !isFile()) {
-        cout << " cannot open '" << _path << "' for reading. no such file. " << endl;
-        cout << "isFile?" << (int) isFile() << " createFile?" << createFile << endl;
-        exit(23);
+        throw FileException("Cannot open '" + _path + "' for reading. No such file. ");
     }
 
     if(_inputFileStream == 0) {
