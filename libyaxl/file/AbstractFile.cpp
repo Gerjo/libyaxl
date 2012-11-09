@@ -145,8 +145,7 @@ void AbstractFile::write(const string& data) {
 
 void AbstractFile::write(const char* data, const int length) {
     if(!isFile()) {
-        cout << "exception: cannot write to non existing file." << endl;
-        return;
+        throw FileException("Cannot open '" + _path + "' for writing. No such file. ");
     }
 
     ofstream writer(_path.c_str(), ios::out);

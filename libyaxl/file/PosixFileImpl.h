@@ -13,6 +13,7 @@
 
 #include "AbstractFile.h"
 #include "../common/CompileConfig.h"
+#include "FileException.h"
 
 namespace yaxl {
 namespace file {

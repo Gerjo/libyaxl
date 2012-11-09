@@ -61,7 +61,7 @@ long WinFileImpl::lastModified(void) {
 
 	if(!loadTimes()) {
 		// Someone made a boo-boo :(
-		// throw FileException("Cannot determine file. Does the file exist?");
+		throw FileException("Cannot determine file. Does the file exist?");
 		return -1;
 	}
 
@@ -79,9 +79,7 @@ vector<string> WinFileImpl::list() {
 	HANDLE filesFound = FindFirstFileA(searchPath.c_str(), &fileData);
 
 	if (filesFound == INVALID_HANDLE_VALUE) {
-		cout << "INVALID_HANDLE_VALUE" << endl;
-		cout << cin.get();
-		exit(-1);
+        throw FileException("INVALID_HANDLE_VALUE");
 	}
 
 	vector<string> files;
@@ -96,8 +94,7 @@ vector<string> WinFileImpl::list() {
 	} while (FindNextFileA(filesFound, &fileData) != 0);
 
 	if (GetLastError() != ERROR_NO_MORE_FILES) {
-		cout << " Broke out of the do while loop for error reasons :( " << endl;
-		exit(-1);
+        throw FileException("Unable to list files in folder.");
 	}
 
 	FindClose(filesFound);
@@ -119,7 +116,7 @@ vector<File> WinFileImpl::listFiles() {
 
 void WinFileImpl::mkDir(const string& dirName) {
     if(_mkdir(dirName.c_str()) != 0)
-        throw new YaxlException("Failed to create directory");
+        throw FileException("Failed to create directory");
 }
 
 }

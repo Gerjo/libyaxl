@@ -50,8 +50,7 @@ vector<string> PosixFileImpl::list(void) {
     DIR *dp;
     struct dirent *dirp;
     if((dp = ::opendir(_path.c_str())) == 0) {
-        cout << "could not opendir." << endl;
-        exit(-1);
+        throw FileException("Unable to open directory.");
     }
 
     while ((dirp = ::readdir(dp)) != NULL) {
