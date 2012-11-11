@@ -39,11 +39,14 @@ namespace yaxl {
             string read(const int bytes);
             int available(void);
             void skip(const int amount);
+            void setBlocking(bool isBlocking);
+            void ensureAvailable(int byteCount);
 
         private:
             InputStream(const InputStream& orig);
             Socket& socket;
             deque<char> buffer;
+            bool _isBlocking;
 
             void concatToBuffer(char* otherBuffer, const int len);
 

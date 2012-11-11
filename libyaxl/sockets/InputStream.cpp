@@ -17,7 +17,7 @@
 namespace yaxl {
     namespace socket {
 
-        InputStream::InputStream(Socket& socket) : socket(socket) {
+        InputStream::InputStream(Socket& socket) : socket(socket), _isBlocking(false) {
 
         }
 
@@ -31,19 +31,63 @@ namespace yaxl {
             }
         }
 
+        void InputStream::ensureAvailable(int byteCount) {
+            // We're not advocating busy waiting loops. If you must, then you can
+            // implement your own!
+            if(!_isBlocking) {
+                throw SocketException("Please enable blocking sockets for your 'unsureAvailable' call to work.");
+            }
+
+            // Initial check, in case there is something left in the buffer, (this can
+            // be nonblocking).
+            int bytesAvailable = buffer.size();
+
+            while(bytesAvailable < byteCount) {
+                //cout << "blocking call placed. Available:" << bytesAvailable << ", desired:" << byteCount << endl;
+                // The available call will be blocking.
+                bytesAvailable = available();
+            }
+
+            //cout << "Ensure read completed. Available:" << bytesAvailable << ", desired:" << byteCount << endl;
+
+            // Semantic return statement :) Let the program continue.
+            return;
+        }
+
         int InputStream::available(void) {
             const int socketFd = socket.getSocketFd();
 
+
             // Using select for time being. Will research non-blocking IO in
             // due time. -- Gerjo
-            timeval timeout = {0, 0};
             fd_set fds;
             FD_ZERO(&fds);
             FD_SET(socketFd, &fds);
 
-            if (select(FD_SETSIZE, &fds, 0, 0, &timeout) == -1) {
+            int r = -1;
+
+            // Sorry about this :( time constraints and stuff.
+            if(_isBlocking) {
+                //cout << "blocking select" << endl;
+                r = ::select(FD_SETSIZE, &fds, 0, 0, NULL);
+
+            } else {
+                timeval timeout = {0, 0};
+                r = ::select(FD_SETSIZE, &fds, 0, 0, &timeout);
+
+            }
+
+            if (r == -1) {
                 throw SocketException(strerror(errno));
             }
+
+            if(r == 0 && _isBlocking) {
+                // symptom indicating the server may be offline.
+                throw SocketException("The server is offline.");
+            }
+
+            //cout << r << " socket(s) available for reading." << endl;
+
 
             if (FD_ISSET(socketFd, &fds)) {
                 const int readChunkSize = 1024;
@@ -52,6 +96,8 @@ namespace yaxl {
 
                 do {
                     bytesRead = ::recv(socketFd, reinterpret_cast<char*> (&buff2), readChunkSize, 0);
+
+                    //cout << "Read:" << bytesRead << " bytes. Errno " << strerror(errno) << endl;
 
                     // We can read no more data at this time.
                     if (bytesRead == 0) {
@@ -64,9 +110,11 @@ namespace yaxl {
 
                     concatToBuffer(buff2, bytesRead);
 
-                } while (bytesRead >= readChunkSize);
+                } while (bytesRead > readChunkSize);
 
                 return buffer.size();
+            } else {
+                //cout << "select yielded without having the correct FD?" << endl;
             }
 
             return buffer.size();
@@ -83,7 +131,7 @@ namespace yaxl {
 
             return str.str();
         }
-        
+
         char InputStream::read(void) {
             const int limit = calculateReadLimit(1);
 
@@ -119,6 +167,10 @@ namespace yaxl {
             char tmp = buffer.front();
             buffer.pop_front();
             return tmp;
+        }
+
+        void InputStream::setBlocking(bool isBlocking) {
+            _isBlocking = isBlocking;
         }
     }
 }
