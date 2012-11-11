@@ -8,6 +8,7 @@
 #include "ScopedLock.h"
 #include "Stack.h"
 #include "Queue.h"
+#include "Semaphore.h"
 
 #endif	/* CONCURRENCY_H */
 

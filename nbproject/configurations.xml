@@ -15,6 +15,7 @@
         <itemPath>libyaxl/concurrency/Runnable.h</itemPath>
         <itemPath>libyaxl/concurrency/ScopedLock.cpp</itemPath>
         <itemPath>libyaxl/concurrency/ScopedLock.h</itemPath>
+        <itemPath>libyaxl/concurrency/Semaphore.h</itemPath>
         <itemPath>libyaxl/concurrency/Stack.cpp</itemPath>
         <itemPath>libyaxl/concurrency/Stack.h</itemPath>
         <itemPath>libyaxl/concurrency/Thread.cpp</itemPath>
