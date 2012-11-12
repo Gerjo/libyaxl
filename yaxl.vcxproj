@@ -114,6 +114,7 @@
    <ClInclude Include="..\libyaxl\libyaxl\concurrency\Runnable.h" />
    <ClCompile Include="..\libyaxl\libyaxl\concurrency\ScopedLock.cpp" />
    <ClInclude Include="..\libyaxl\libyaxl\concurrency\ScopedLock.h" />
+   <ClInclude Include="..\libyaxl\libyaxl\concurrency\Semaphore.h" />
    <ClCompile Include="..\libyaxl\libyaxl\concurrency\Stack.cpp" />
    <ClInclude Include="..\libyaxl\libyaxl\concurrency\Stack.h" />
    <ClCompile Include="..\libyaxl\libyaxl\concurrency\Thread.cpp" />

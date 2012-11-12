@@ -51,6 +51,9 @@
     <ClInclude Include="..\libyaxl\libyaxl\concurrency\ScopedLock.h">
       <Filter>concurrency</Filter>
     </ClInclude>
+    <ClInclude Include="..\libyaxl\libyaxl\concurrency\Semaphore.h">
+      <Filter>concurrency</Filter>
+    </ClInclude>
     <ClCompile Include="..\libyaxl\libyaxl\concurrency\Stack.cpp">
       <Filter>concurrency</Filter>
     </ClCompile>
