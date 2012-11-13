@@ -41,7 +41,7 @@ namespace yaxl {
             int available(void);
             void skip(const int amount);
             void setBlocking(bool isBlocking);
-            void ensureAvailable(int byteCount);
+            bool ensureAvailable(int byteCount);
             void forceQuit(void);
 
         private:

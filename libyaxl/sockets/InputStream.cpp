@@ -35,7 +35,7 @@ namespace yaxl {
             }
         }
 
-        void InputStream::ensureAvailable(int byteCount) {
+        bool InputStream::ensureAvailable(int byteCount) {
             // We're not advocating busy waiting loops. If you must, then you can
             // implement your own!
             if(!_isBlocking) {
@@ -52,10 +52,15 @@ namespace yaxl {
                 bytesAvailable = available();
             }
 
+            // The data isn't actually "ensured", since we're exiting the application.
+            if(_isStopping) {
+                return false;
+            }
+
             //cout << "Ensure read completed. Available:" << bytesAvailable << ", desired:" << byteCount << endl;
 
             // Semantic return statement :) Let the program continue.
-            return;
+            return true;
         }
 
         void InputStream::forceQuit(void) {
