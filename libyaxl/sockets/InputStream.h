@@ -35,18 +35,21 @@ namespace yaxl {
         class LIBEXPORT InputStream {
         public:
             InputStream(Socket& socket);
+            ~InputStream(void);
             char read(void);
             string read(const int bytes);
             int available(void);
             void skip(const int amount);
             void setBlocking(bool isBlocking);
             void ensureAvailable(int byteCount);
+            void forceQuit(void);
 
         private:
             InputStream(const InputStream& orig);
             Socket& socket;
             deque<char> buffer;
             bool _isBlocking;
+            bool _isStopping;
 
             void concatToBuffer(char* otherBuffer, const int len);
 

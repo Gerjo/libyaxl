@@ -17,12 +17,16 @@
 namespace yaxl {
     namespace socket {
 
-        InputStream::InputStream(Socket& socket) : socket(socket), _isBlocking(false) {
+        InputStream::InputStream(Socket& socket) : socket(socket), _isBlocking(false), _isStopping(false) {
 
         }
 
         InputStream::InputStream(const InputStream& orig) : socket(orig.socket) {
 
+        }
+
+        InputStream::~InputStream(void) {
+            forceQuit();
         }
 
         void InputStream::concatToBuffer(char* otherBuffer, const int len) {
@@ -42,7 +46,7 @@ namespace yaxl {
             // be nonblocking).
             int bytesAvailable = buffer.size();
 
-            while(bytesAvailable < byteCount) {
+            while(bytesAvailable < byteCount && !_isStopping) {
                 //cout << "blocking call placed. Available:" << bytesAvailable << ", desired:" << byteCount << endl;
                 // The available call will be blocking.
                 bytesAvailable = available();
@@ -52,6 +56,10 @@ namespace yaxl {
 
             // Semantic return statement :) Let the program continue.
             return;
+        }
+
+        void InputStream::forceQuit(void) {
+            _isStopping = true;
         }
 
         int InputStream::available(void) {
@@ -68,8 +76,10 @@ namespace yaxl {
 
             // Sorry about this :( time constraints and stuff.
             if(_isBlocking) {
-                //cout << "blocking select" << endl;
-                r = ::select(FD_SETSIZE, &fds, 0, 0, NULL);
+                // OK, this is a bummer situation. The timeout is required, else it will
+                // keep on blocking forever.
+                timeval timeout = {2, 0};
+                r = ::select(FD_SETSIZE, &fds, 0, 0, &timeout);
 
             } else {
                 timeval timeout = {0, 0};
@@ -81,9 +91,14 @@ namespace yaxl {
                 throw SocketException(strerror(errno));
             }
 
+            // Don't bother with anything.
+            if(_isStopping) {
+                return 0;
+            }
+
             if(r == 0 && _isBlocking) {
                 // symptom indicating the server may be offline.
-                throw SocketException("The server is offline.");
+                //throw SocketException("The server is offline or a SELECT() timeout was reached.");
             }
 
             //cout << r << " socket(s) available for reading." << endl;
