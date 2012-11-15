@@ -17,7 +17,7 @@ namespace yaxl {
         class Semaphore {
         public:
 
-            Semaphore(int count) : _count(count) {
+            Semaphore(int count = 0) : _count(count) {
 
             }
 
