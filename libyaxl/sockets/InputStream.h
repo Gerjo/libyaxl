@@ -23,6 +23,7 @@
 #endif
 
 #include "SocketException.h"
+#include "DisconnectException.h"
 #include "../common/CompileConfig.h"
 
 namespace yaxl {

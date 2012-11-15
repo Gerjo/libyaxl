@@ -40,6 +40,7 @@
         <itemPath>libyaxl/file/md5.h</itemPath>
       </logicalFolder>
       <logicalFolder name="sockets" displayName="sockets" projectFiles="true">
+        <itemPath>libyaxl/sockets/DisconnectException.h</itemPath>
         <itemPath>libyaxl/sockets/InputStream.cpp</itemPath>
         <itemPath>libyaxl/sockets/InputStream.h</itemPath>
         <itemPath>libyaxl/sockets/OutputStream.cpp</itemPath>

@@ -3,6 +3,7 @@
 
 #include "Socket.h"
 #include "SocketException.h"
+#include "DisconnectException.h"
 #include "InputStream.h"
 #include "OutputStream.h"
 #include "ServerSocket.h"

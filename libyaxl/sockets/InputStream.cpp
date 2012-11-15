@@ -92,6 +92,8 @@ namespace yaxl {
 
             }
 
+            cout << "bar teeheee doopie _isStopping:" << (int) _isStopping << " r:" << r << endl;
+
             if (r == -1) {
                 throw SocketException(strerror(errno));
             }
@@ -102,6 +104,7 @@ namespace yaxl {
             }
 
             if(r == 0 && _isBlocking) {
+                cout << "disconnected?" << endl;
                 // symptom indicating the server may be offline.
                 //throw SocketException("The server is offline or a SELECT() timeout was reached.");
             }
@@ -110,6 +113,8 @@ namespace yaxl {
 
 
             if (FD_ISSET(socketFd, &fds)) {
+                cout << "isset FD " << endl;
+
                 const int readChunkSize = 1024;
                 char buff2[readChunkSize];
                 int bytesRead;
@@ -117,11 +122,10 @@ namespace yaxl {
                 do {
                     bytesRead = ::recv(socketFd, reinterpret_cast<char*> (&buff2), readChunkSize, 0);
 
-                    //cout << "Read:" << bytesRead << " bytes. Errno " << strerror(errno) << endl;
-
                     // We can read no more data at this time.
                     if (bytesRead == 0) {
-                        return buffer.size();
+                        throw DisconnectedException();
+                        //return buffer.size();
                     }
 
                     if (bytesRead == -1) {
@@ -134,7 +138,7 @@ namespace yaxl {
 
                 return buffer.size();
             } else {
-                //cout << "select yielded without having the correct FD?" << endl;
+                cout << "select yielded without having the correct FD?" << endl;
             }
 
             return buffer.size();
