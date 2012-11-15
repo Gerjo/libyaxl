@@ -21,7 +21,7 @@ namespace yaxl {
             Thread(Runnable* runnable);
             virtual ~Thread();
             virtual void run();
-            void start();
+            virtual void start();
             void join();
             void detach();
             bool joinable();
