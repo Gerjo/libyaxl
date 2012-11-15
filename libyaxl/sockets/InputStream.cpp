@@ -124,6 +124,7 @@ namespace yaxl {
 
                     // We can read no more data at this time.
                     if (bytesRead == 0) {
+                        // Possibly check against errno == 0? This may be a genuine error.
                         throw DisconnectedException();
                         //return buffer.size();
                     }
