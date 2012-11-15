@@ -35,7 +35,7 @@ using namespace std;
 class LIBEXPORT Socket {
 public:
     Socket(const string& address, const string& port);
-    Socket(string address, int port);
+    Socket(const string& address, int port);
     virtual ~Socket();
     void close(void);
 

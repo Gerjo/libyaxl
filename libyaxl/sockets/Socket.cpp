@@ -19,7 +19,7 @@ Socket::Socket(const string& address, const string& port) : _isConnected(false),
     connect();
 }
 
-Socket::Socket(string address, int port) : _isConnected(false), yes(1), no(0) {
+Socket::Socket(const string& address, int port) : _isConnected(false), yes(1), no(0) {
     stringstream ss;
     ss << port;
 
