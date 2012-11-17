@@ -46,8 +46,10 @@ namespace yaxl {
             // be nonblocking).
             int bytesAvailable = buffer.size();
 
+            //cout << "[" << time(NULL) << "] Starting ensure while loop, available: " << bytesAvailable << " of " << byteCount << "byte(s)" << endl;
+
             while(bytesAvailable < byteCount && !_isStopping) {
-                //cout << "blocking call placed. Available:" << bytesAvailable << ", desired:" << byteCount << endl;
+                //cout << "[" << time(NULL) << "] blocking call placed, available:" << bytesAvailable << " of " << byteCount << endl;
                 // The available call will be blocking.
                 bytesAvailable = available();
             }
@@ -57,7 +59,7 @@ namespace yaxl {
                 return false;
             }
 
-            //cout << "Ensure read completed. Available:" << bytesAvailable << ", desired:" << byteCount << endl;
+            //cout << "[" << time(NULL) << "] Ensure read completed, available:" << bytesAvailable << " of " << byteCount << "byte(s)" << endl;
 
             // Semantic return statement :) Let the program continue.
             return true;
@@ -83,6 +85,7 @@ namespace yaxl {
             if(_isBlocking) {
                 // OK, this is a bummer situation. The timeout is required, else it will
                 // keep on blocking forever.
+                //cout << "[" << time(NULL) << "] Running select. Two second delay. " << endl;
                 timeval timeout = {2, 0};
                 r = ::select(FD_SETSIZE, &fds, 0, 0, &timeout);
 
