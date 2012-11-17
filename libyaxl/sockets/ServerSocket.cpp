@@ -81,7 +81,17 @@ namespace yaxl {
                 throw SocketException(strerror(errno));
             }
 
-            Socket* sock = new Socket(newsockfd);
+            char ipv4[16];
+
+            #ifdef _WIN32
+                InetNtop(AF_INET, &(cli_addr.sin_addr), ipv4, sizeof(ipv4));
+            #else
+                inet_ntop(AF_INET, &(cli_addr.sin_addr), ipv4, sizeof(ipv4));
+            #endif
+
+            int port = ntohs(cli_addr.sin_port);
+
+            Socket* sock = new Socket(newsockfd, ipv4, port);
 
             return sock;
         }

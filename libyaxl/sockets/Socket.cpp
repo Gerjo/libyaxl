@@ -31,8 +31,10 @@ Socket::Socket(const string& address, int port) : _isConnected(false), yes(1), n
 }
 
 // Private, available via friendclass.
-Socket::Socket(int socketFd) : yes(1), no(0)  {
+Socket::Socket(int socketFd, const string& address, int port) : yes(1), no(0)  {
     this->socketFd = socketFd;
+    this->address  = address;
+    this->port     = port;
     _isConnected   = true;
     createStreams();
 }

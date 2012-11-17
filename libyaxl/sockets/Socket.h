@@ -57,7 +57,7 @@ private:
     const char no;
 
 	Socket(const Socket& orig);
-    Socket(int socketFd);
+    Socket(int socketFd, const string& address, int port);
     string address;
     string port;
     int socketFd;
