@@ -105,6 +105,9 @@
     <ClInclude Include="..\libyaxl\libyaxl\file\WinFileImpl.h">
       <Filter>file</Filter>
     </ClInclude>
+    <ClInclude Include="..\libyaxl\libyaxl\sockets\DisconnectException.h">
+      <Filter>sockets</Filter>
+    </ClInclude>
     <ClCompile Include="..\libyaxl\libyaxl\sockets\InputStream.cpp">
       <Filter>sockets</Filter>
     </ClCompile>

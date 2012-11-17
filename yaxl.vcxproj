@@ -138,6 +138,7 @@
    <ClInclude Include="..\libyaxl\libyaxl\file\WinFileImpl.h" />
   </ItemGroup>
   <ItemGroup>
+   <ClInclude Include="..\libyaxl\libyaxl\sockets\DisconnectException.h" />
    <ClCompile Include="..\libyaxl\libyaxl\sockets\InputStream.cpp" />
    <ClInclude Include="..\libyaxl\libyaxl\sockets\InputStream.h" />
    <ClCompile Include="..\libyaxl\libyaxl\sockets\OutputStream.cpp" />
