@@ -49,6 +49,9 @@ public:
     void setTcpNoDelay(bool newState);
     void setTcpCork(bool newState);
 
+    const string& getIpv4();
+    int getPort();
+
     friend class ServerSocket;
 
     int getFd();

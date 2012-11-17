@@ -12,19 +12,16 @@ namespace yaxl {
 namespace socket {
 
 Socket::Socket(const string& address, const string& port) : _isConnected(false), yes(1), no(0) {
-    this->address.append(address.c_str());
-    this->port.append(port.c_str());
+    this->address = address;
+    this->port = port;
 
     createStreams();
     connect();
 }
 
 Socket::Socket(const string& address, int port) : _isConnected(false), yes(1), no(0) {
-    stringstream ss;
-    ss << port;
-
     this->address = address;
-    this->port    = ss.str();
+    this->port    = std::to_string(port);
 
     createStreams();
     connect();
@@ -34,8 +31,9 @@ Socket::Socket(const string& address, int port) : _isConnected(false), yes(1), n
 Socket::Socket(int socketFd, const string& address, int port) : yes(1), no(0)  {
     this->socketFd = socketFd;
     this->address  = address;
-    this->port     = port;
+    this->port     = std::to_string(port);;
     _isConnected   = true;
+
     createStreams();
 }
 
@@ -175,6 +173,14 @@ void Socket::setupWGA(void) {
 			exit(1);
 		}
 	#endif
+}
+
+const string& Socket::getIpv4() {
+    return address;
+}
+
+int Socket::getPort() {
+    return atoi(port.c_str());
 }
 
 }
