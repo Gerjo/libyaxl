@@ -55,8 +55,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-lpthread
-CXXFLAGS=-lpthread
+CCFLAGS=-D_GLIBCXX_USE_NANOSLEEP
+CXXFLAGS=-D_GLIBCXX_USE_NANOSLEEP
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -65,7 +65,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lpthread
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

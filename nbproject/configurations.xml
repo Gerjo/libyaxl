@@ -83,7 +83,7 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
-          <commandLine>-lpthread -D_GLIBCXX_USE_NANOSLEEP</commandLine>
+          <commandLine>-D_GLIBCXX_USE_NANOSLEEP</commandLine>
         </ccTool>
         <linkerTool>
           <output>../dist/libyaxl.${CND_DLIB_EXT}</output>
@@ -105,7 +105,7 @@
           <incDir>
             <pElem>src</pElem>
           </incDir>
-          <commandLine>-lpthread</commandLine>
+          <commandLine>-D_GLIBCXX_USE_NANOSLEEP</commandLine>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -115,6 +115,9 @@
         </asmTool>
         <linkerTool>
           <output>../dist/libyaxl.${CND_DLIB_EXT}</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
     </conf>
