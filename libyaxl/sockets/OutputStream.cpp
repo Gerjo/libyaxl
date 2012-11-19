@@ -13,6 +13,7 @@
 #include "OutputStream.h"
 #include "SocketException.h"
 #include "Socket.h"
+#include "DisconnectException.h"
 
 namespace yaxl {
     namespace socket {
@@ -51,8 +52,11 @@ namespace yaxl {
                         continue;
                     }
 
+                    if (errno == ECONNRESET) {
+                        throw DisconnectedException();
+                    }
+
                     throw SocketException(strerror(errno));
-                    break;
                 }
 
                 if ((total += bytesSent) < sendLength) {
