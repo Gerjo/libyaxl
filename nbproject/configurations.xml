@@ -87,6 +87,9 @@
         </ccTool>
         <linkerTool>
           <output>../dist/libyaxl.${CND_DLIB_EXT}</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lpthread</linkerOptionItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
     </conf>
