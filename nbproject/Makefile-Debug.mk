@@ -36,8 +36,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/libyaxl/sockets/InputStream.o \
+	${OBJECTDIR}/libyaxl/concurrency/Condition.o \
 	${OBJECTDIR}/libyaxl/sockets/Socket.o \
 	${OBJECTDIR}/libyaxl/sockets/OutputStream.o \
+	${OBJECTDIR}/libyaxl/concurrency/CachedCondition.o \
 	${OBJECTDIR}/libyaxl/concurrency/Queue.o \
 	${OBJECTDIR}/libyaxl/concurrency/ScopedLock.o \
 	${OBJECTDIR}/libyaxl/concurrency/Thread.o \
@@ -80,6 +82,11 @@ ${OBJECTDIR}/libyaxl/sockets/InputStream.o: libyaxl/sockets/InputStream.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/sockets/InputStream.o libyaxl/sockets/InputStream.cpp
 
+${OBJECTDIR}/libyaxl/concurrency/Condition.o: libyaxl/concurrency/Condition.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/concurrency/Condition.o libyaxl/concurrency/Condition.cpp
+
 ${OBJECTDIR}/libyaxl/sockets/Socket.o: libyaxl/sockets/Socket.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/sockets
 	${RM} $@.d
@@ -89,6 +96,11 @@ ${OBJECTDIR}/libyaxl/sockets/OutputStream.o: libyaxl/sockets/OutputStream.cpp
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/sockets
 	${RM} $@.d
 	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/sockets/OutputStream.o libyaxl/sockets/OutputStream.cpp
+
+${OBJECTDIR}/libyaxl/concurrency/CachedCondition.o: libyaxl/concurrency/CachedCondition.cpp 
+	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency
+	${RM} $@.d
+	$(COMPILE.cc) -g -Isrc -std=c++11 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/libyaxl/concurrency/CachedCondition.o libyaxl/concurrency/CachedCondition.cpp
 
 ${OBJECTDIR}/libyaxl/concurrency/Queue.o: libyaxl/concurrency/Queue.cpp 
 	${MKDIR} -p ${OBJECTDIR}/libyaxl/concurrency

@@ -7,7 +7,11 @@
         <itemPath>libyaxl/common/YaxlException.h</itemPath>
       </logicalFolder>
       <logicalFolder name="concurrency" displayName="concurrency" projectFiles="true">
+        <itemPath>libyaxl/concurrency/CachedCondition.cpp</itemPath>
+        <itemPath>libyaxl/concurrency/CachedCondition.h</itemPath>
         <itemPath>libyaxl/concurrency/ConcurrencyException.h</itemPath>
+        <itemPath>libyaxl/concurrency/Condition.cpp</itemPath>
+        <itemPath>libyaxl/concurrency/Condition.h</itemPath>
         <itemPath>libyaxl/concurrency/Mutex.cpp</itemPath>
         <itemPath>libyaxl/concurrency/Mutex.h</itemPath>
         <itemPath>libyaxl/concurrency/Queue.cpp</itemPath>

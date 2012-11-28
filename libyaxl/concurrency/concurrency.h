@@ -9,6 +9,8 @@
 #include "Stack.h"
 #include "Queue.h"
 #include "Semaphore.h"
+#include "Condition.h"
+#include "CachedCondition.h"
 
 #endif	/* CONCURRENCY_H */
 
