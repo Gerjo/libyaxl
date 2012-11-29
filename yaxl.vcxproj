@@ -105,8 +105,12 @@
    <ClInclude Include="..\libyaxl\libyaxl\common\YaxlException.h" />
   </ItemGroup>
   <ItemGroup>
+   <ClCompile Include="..\libyaxl\libyaxl\concurrency\CachedCondition.cpp" />
+   <ClInclude Include="..\libyaxl\libyaxl\concurrency\CachedCondition.h" />
    <ClInclude Include="..\libyaxl\libyaxl\concurrency\concurrency.h" />
    <ClInclude Include="..\libyaxl\libyaxl\concurrency\ConcurrencyException.h" />
+   <ClCompile Include="..\libyaxl\libyaxl\concurrency\Condition.cpp" />
+   <ClInclude Include="..\libyaxl\libyaxl\concurrency\Condition.h" />
    <ClCompile Include="..\libyaxl\libyaxl\concurrency\Mutex.cpp" />
    <ClInclude Include="..\libyaxl\libyaxl\concurrency\Mutex.h" />
    <ClCompile Include="..\libyaxl\libyaxl\concurrency\Queue.cpp" />

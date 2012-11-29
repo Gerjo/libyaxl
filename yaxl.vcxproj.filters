@@ -24,10 +24,22 @@
     <ClInclude Include="..\libyaxl\libyaxl\common\YaxlException.h">
       <Filter>common</Filter>
     </ClInclude>
+    <ClCompile Include="..\libyaxl\libyaxl\concurrency\CachedCondition.cpp">
+      <Filter>concurrency</Filter>
+    </ClCompile>
+    <ClInclude Include="..\libyaxl\libyaxl\concurrency\CachedCondition.h">
+      <Filter>concurrency</Filter>
+    </ClInclude>
     <ClInclude Include="..\libyaxl\libyaxl\concurrency\concurrency.h">
       <Filter>concurrency</Filter>
     </ClInclude>
     <ClInclude Include="..\libyaxl\libyaxl\concurrency\ConcurrencyException.h">
+      <Filter>concurrency</Filter>
+    </ClInclude>
+    <ClCompile Include="..\libyaxl\libyaxl\concurrency\Condition.cpp">
+      <Filter>concurrency</Filter>
+    </ClCompile>
+    <ClInclude Include="..\libyaxl\libyaxl\concurrency\Condition.h">
       <Filter>concurrency</Filter>
     </ClInclude>
     <ClCompile Include="..\libyaxl\libyaxl\concurrency\Mutex.cpp">
