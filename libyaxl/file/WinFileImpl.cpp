@@ -19,7 +19,7 @@ long WinFileImpl::loadTimes(void) {
 }
 
 void WinFileImpl::loadAttributes(void) {
-	_fileAttributes = GetFileAttributesA(_path.c_str());
+    _fileAttributes = GetFileAttributesA(_path.c_str());
 }
 
 bool WinFileImpl::isDirectory(void) {
