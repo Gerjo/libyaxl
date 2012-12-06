@@ -102,8 +102,16 @@ void AbstractFile::closeStreams(void) {
 }
 
 void AbstractFile::openInputFileStream(bool createFile) {
-    if(!createFile && !isFile()) {
+    bool fileExists = false;
+
+    if(!createFile && !(fileExists = isFile())) {
         throw FileException("Cannot open '" + _path + "' for reading. No such file. ");
+    }
+
+    // Neither "ifstream" nor "fstream" will create files.
+    if(createFile && !fileExists) {
+        ofstream writestream(_path.c_str());
+        writestream.close();
     }
 
     if(_inputFileStream == 0) {
