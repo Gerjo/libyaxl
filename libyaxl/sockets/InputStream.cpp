@@ -170,7 +170,7 @@ namespace yaxl {
             }
         }
 
-        const inline int InputStream::calculateReadLimit(const int requestSize) {
+        inline int InputStream::calculateReadLimit(const int requestSize) {
             int bufferSize = buffer.size();
 
             if (bufferSize < requestSize) {

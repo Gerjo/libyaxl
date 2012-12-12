@@ -54,7 +54,7 @@ namespace yaxl {
 
             void concatToBuffer(char* otherBuffer, const int len);
 
-            const int calculateReadLimit(const int requestSize);
+            int calculateReadLimit(const int requestSize);
             char shiftBuffer(void);
         };
     }

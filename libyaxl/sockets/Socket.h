@@ -45,7 +45,7 @@ public:
     friend class OutputStream;
     friend class InputStream;
 
-	const bool isConnected(void);
+	bool isConnected(void);
     void setTcpNoDelay(bool newState);
     void setTcpCork(bool newState);
 
@@ -71,7 +71,7 @@ private:
     InputStream* inputStream;
 
     void createStreams(void);
-    const int getSocketFd() const;
+    int getSocketFd() const;
     void close(const int whom);
 
     static void setupWGA(void);

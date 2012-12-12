@@ -141,7 +141,7 @@ InputStream& Socket::getInputStream(void) const {
     return *inputStream;
 }
 
-const int Socket::getSocketFd() const {
+int Socket::getSocketFd() const {
     return socketFd;
 }
 
@@ -159,7 +159,7 @@ void Socket::close(const int whom) {
 	_isConnected = false;
 }
 
-const bool Socket::isConnected(void) {
+bool Socket::isConnected(void) {
 	return _isConnected;
 }
 
