@@ -28,7 +28,7 @@ namespace yaxl {
             }
             
         private:
-            Condition(const Condition& orig) {
+            Condition(const Condition&) {
 
             }
 

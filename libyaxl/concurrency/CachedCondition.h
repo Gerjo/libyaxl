@@ -43,7 +43,7 @@ namespace yaxl {
             }
 
         private:
-            CachedCondition(const CachedCondition& orig) {
+            CachedCondition(const CachedCondition&) {
 
             }
 
