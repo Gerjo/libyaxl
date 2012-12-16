@@ -23,7 +23,7 @@ namespace yaxl {
             // then you must *probably* call detatch() on this thread first.
 
             // More cryptic: Only the thread that spawned a thread can stop
-            // that thread, onless this thread is detached, or joined and both
+            // that thread, unless this thread is detached, or joined and both
             // threads run out of scope. -- Gerjo
             delete _thread;
         }
