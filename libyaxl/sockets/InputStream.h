@@ -39,10 +39,10 @@ namespace yaxl {
             ~InputStream(void);
             char read(void);
             string read(const int bytes);
-            int available(void);
+            size_t available(void);
             void skip(const int amount);
             void setBlocking(bool isBlocking);
-            bool ensureAvailable(int byteCount);
+            bool ensureAvailable(size_t byteCount);
             void forceQuit(void);
 
         private:
@@ -54,7 +54,7 @@ namespace yaxl {
 
             void concatToBuffer(char* otherBuffer, const int len);
 
-            int calculateReadLimit(const int requestSize);
+            size_t calculateReadLimit(const size_t requestSize);
             char shiftBuffer(void);
         };
     }

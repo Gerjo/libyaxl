@@ -18,7 +18,7 @@ string AbstractFile::getName() {
 
 string AbstractFile::getCanonicalName() {
     string name = getName();
-    int len     = name.length();
+    size_t len  = name.length();
 
     while(len > 1 && name.substr(len - 1, len).compare("/") == 0) {
         name = name.substr(0, len -1);
@@ -151,7 +151,7 @@ void AbstractFile::write(const string& data) {
     this->write(data.c_str(), data.length());
 }
 
-void AbstractFile::write(const char* data, const int length) {
+void AbstractFile::write(const char* data, const size_t length) {
     if(!isFile()) {
         throw FileException("Cannot open '" + _path + "' for writing. No such file. ");
     }
@@ -165,7 +165,7 @@ void AbstractFile::append(const string& data) {
     this->append(data.c_str(), data.length());
 }
 
-void AbstractFile::append(const char* data, const int length) {
+void AbstractFile::append(const char* data, const size_t length) {
     ofstream writer(_path.c_str(), ios::out | ios::app);
     writer.write(data, length);
     writer.flush();

@@ -73,8 +73,8 @@ void getWebsiteHttp() {
         int meh = 0;
 
         do {
-            int bytesAvailable = in.available();
-            string buff        = in.read(bytesAvailable);
+            size_t bytesAvailable = in.available();
+            string buff           = in.read(bytesAvailable);
             cout << buff;
             all += buff;
 
@@ -107,7 +107,7 @@ try {
         char prev    = 0;
         stringstream buff;
         do {
-            int available = in.available();
+            size_t available = in.available();
             if(available > 0) {
                 prev    = current;
                 current = in.read();

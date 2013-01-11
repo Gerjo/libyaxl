@@ -48,7 +48,7 @@ namespace yaxl {
             }
 
             Socket::setupWGA();
-
+            
             _socketFd = ::socket(AF_INET, SOCK_STREAM, 0);
 
             if (_socketFd < 0) {

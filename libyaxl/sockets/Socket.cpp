@@ -1,6 +1,6 @@
-#ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
-#include <ws2tcpip.h>
+#ifdef WIN32
+    #define _CRT_SECURE_NO_WARNINGS
+    #include <ws2tcpip.h>
 #endif
 
 #include "Socket.h"
@@ -107,7 +107,6 @@ void Socket::connect(void) {
         if ((socketFd = ::socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1) {
             throw SocketException(strerror(errno));
         }
-
 
         if (::connect(socketFd, p->ai_addr, p->ai_addrlen) == -1) {
             // So we're unable to connect. Not detrimental, since there may

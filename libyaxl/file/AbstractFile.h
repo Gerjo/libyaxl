@@ -68,9 +68,9 @@ public:
     virtual void mkDirs(void);
 
     virtual void write(const string& data);
-    virtual void write(const char* data, const int length);
+    virtual void write(const char* data, const size_t length);
     virtual void append(const string& data);
-    virtual void append(const char* data, const int length);
+    virtual void append(const char* data, const size_t length);
     virtual void reset();
 
     virtual bool createNewFile(void);

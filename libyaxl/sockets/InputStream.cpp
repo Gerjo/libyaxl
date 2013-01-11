@@ -35,7 +35,7 @@ namespace yaxl {
             }
         }
 
-        bool InputStream::ensureAvailable(int byteCount) {
+        bool InputStream::ensureAvailable(size_t byteCount) {
             // We're not advocating busy waiting loops. If you must, then you can
             // implement your own!
             if(!_isBlocking) {
@@ -44,7 +44,7 @@ namespace yaxl {
 
             // Initial check, in case there is something left in the buffer, (this can
             // be nonblocking).
-            int bytesAvailable = buffer.size();
+            size_t bytesAvailable = buffer.size();
 
             //cout << "[" << time(NULL) << "] Starting ensure while loop, available: " << bytesAvailable << " of " << byteCount << "byte(s)" << endl;
 
@@ -69,7 +69,7 @@ namespace yaxl {
             _isStopping = true;
         }
 
-        int InputStream::available(void) {
+        size_t InputStream::available(void) {
             const int socketFd = socket.getSocketFd();
 
 
@@ -138,11 +138,11 @@ namespace yaxl {
         }
 
         string InputStream::read(const int numBytes) {
-            const int limit = calculateReadLimit(numBytes);
+            const size_t limit = calculateReadLimit(numBytes);
 
             stringstream str;
 
-            for (int i = 0; i < limit; ++i) {
+            for (size_t i = 0; i < limit; ++i) {
                 str << shiftBuffer();
             }
 
@@ -150,7 +150,7 @@ namespace yaxl {
         }
 
         char InputStream::read(void) {
-            const int limit = calculateReadLimit(1);
+            const size_t limit = calculateReadLimit(1);
 
             if (limit > 0) {
                 return shiftBuffer();
@@ -162,16 +162,16 @@ namespace yaxl {
         }
 
         void InputStream::skip(const int skipBytes) {
-            const int limit = calculateReadLimit(skipBytes);
+            const size_t limit = calculateReadLimit(skipBytes);
 
             // Dispose the characters from the buffer.
-            for (int i = 0; i < limit; ++i) {
+            for (size_t i = 0; i < limit; ++i) {
                 buffer.pop_front();
             }
         }
 
-        inline int InputStream::calculateReadLimit(const int requestSize) {
-            int bufferSize = buffer.size();
+        inline size_t InputStream::calculateReadLimit(const size_t requestSize) {
+            size_t bufferSize = buffer.size();
 
             if (bufferSize < requestSize) {
                 bufferSize = this->available();
